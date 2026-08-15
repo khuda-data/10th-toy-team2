@@ -4,6 +4,7 @@ __pycache__/
 
 # DEM 원본은 용량이 크고 팀원마다 받는 도엽이 달라서 git에 올리지 않음
 data/dem/
+data/raw/dem/
 
 # build_dataset.py / model_speed.py 실행 결과물 (재생성 가능)
 data/processed/
