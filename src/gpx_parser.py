@@ -1,6 +1,7 @@
 """GPX 트랙 포인트 파싱.
 
-파일명 규칙: {이름}_{카테고리}_{회차}회차.gpx (예: 권동하_급경사내리막_1회차.gpx)
+파일명 규칙: {이름}_{카테고리}_{회차}[회차].gpx ("회차" 접미사는 선택.
+예: 권동하_급경사내리막_1회차.gpx, 홍민기_평지_6.gpx)
 GPX 자체의 <ele>는 신뢰도가 낮아 좌표(lat/lon)만 사용하고, 고도는 dem.py에서 별도 매핑한다.
 """
 from __future__ import annotations
@@ -12,7 +13,7 @@ from pathlib import Path
 import gpxpy
 import pandas as pd
 
-FILENAME_RE = re.compile(r"^(?P<person>[^_]+)_(?P<category>[^_]+)_(?P<trial>\d+)회차\.gpx$")
+FILENAME_RE = re.compile(r"^(?P<person>[^_]+)_(?P<category>[^_]+)_(?P<trial>\d+)(?:회차)?\.gpx$")
 
 
 def parse_filename(path: Path) -> dict:

@@ -86,7 +86,7 @@ python -m src.model_speed
 ## 2. 모듈별 역할
 
 - **`gpx_parser.py`** — GPX 파일명(`이름_카테고리_회차.gpx`)에서 메타데이터를 파싱하고, 트랙포인트(위도·경도·시간)를 표로 만듭니다. macOS 파일명 유니코드(NFC/NFD 혼재) 이슈를 정규화해서 처리합니다.
-- **`dem.py`** — 여러 DEM 도엽을 하나로 모자이크한 뒤, WGS84 좌표를 DEM 좌표계로 변환해 픽셀 고도값을 샘플링합니다(`DEMSampler`).
+- **`dem_utils.py`** — 국토정보플랫폼 등고선 SHP에서 TIN(Delaunay) 선형보간으로 5m DEM(GeoTIFF)을 만들고(`build_dem_from_contours`), WGS84 좌표를 DEM 좌표계로 변환해 픽셀 고도값을 샘플링합니다(`sample_dem`). 90m DEM 대비 30m 구간 경사도 분산이 크게 줄어드는 것을 확인해 `build_dataset.py`의 기본 고도 소스로 채택했습니다. (구버전 `dem.py`의 `DEMSampler`는 여러 도엽을 rasterio로 모자이크하는 방식으로, 더 이상 파이프라인에서 쓰이진 않지만 참고용으로 남아 있습니다.)
 - **`segmentation.py`** — haversine 거리로 누적거리를 계산해 30~50m 단위로 트랙을 구간화하고, 구간별 거리·시간·속도·경사도(%)를 산출합니다.
 - **`build_dataset.py`** — 위 세 모듈을 순서대로 실행하는 진입점. `segments.csv` 생성.
 - **`model_speed.py`** — `segments.csv`를 읽어 `speed_ratio`(=구간속도÷개인 평지속도) 정규화 → pooled 2차 다항회귀로 `k_slope` 적합 → 잔차의 사람별 평균에 Shrinkage(`w_i = n_i/(n_i+k)`)를 적용해 `v_user`(개인별 평지 기준 보행속도)를 추정.
