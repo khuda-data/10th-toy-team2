@@ -1,15 +1,17 @@
 # 전처리 파이프라인 (GPX → DEM 고도 매핑 → 구간화 → v_user 추정)
 
-`data/raw/`의 GPX 원본에서 좌표를 뽑아 국토지리정보원 DEM으로 고도를 매핑하고,
-30~50m 구간으로 잘라 회귀분석에 쓸 학습 테이블을 만드는 스크립트 모음입니다.
+`data/raw/`의 GPX 원본에서 좌표를 뽑아 국토지리정보원 등고선 기반 5m DEM으로 고도를
+매핑하고, 30~50m 구간으로 잘라 회귀분석에 쓸 학습 테이블을 만드는 스크립트 모음입니다.
 
 ## 전체 흐름
 
 ```
-GPX(팀원별 다수 파일) ──▶ gpx_parser.py ──▶ 좌표+시간 포인트 테이블
-                                              │
-                          DEM(.tif/.img/.asc) ▼
-                                        dem.py (고도 샘플링)
+등고선 SHP(팀원별 지역) ──▶ dem_utils.py (build_dem_from_contours) ──▶ 5m DEM(GeoTIFF)
+                                                                            │
+GPX(팀원별 다수 파일) ──▶ gpx_parser.py ──▶ 좌표+시간 포인트 테이블          │
+                                              │                            │
+                                              ▼                            │
+                                    dem_utils.py (sample_dem) ◀────────────┘
                                               │
                                               ▼
                                     segmentation.py (30~50m 구간화)
@@ -32,35 +34,46 @@ GPX(팀원별 다수 파일) ──▶ gpx_parser.py ──▶ 좌표+시간 포
 pip install -r requirements.txt
 ```
 
-### 0-2. DEM(수치표고모형) 파일 준비
+### 0-2. DEM(수치표고모형) 준비 — 등고선 SHP로 직접 생성 (팀 확정 방식)
 
 GPX의 `<ele>` 값은 스마트폰 GPS 특성상 부정확해서(같은 구간 반복 측정해도 값이 들쭉날쭉) 쓰지 않습니다.
-대신 **국토지리정보원 국토정보플랫폼**(https://map.ngii.go.kr)의 정밀 DEM을 좌표에 매핑해 고도를 구합니다.
+국토지리정보원의 완성된 공개DEM(90m)도 검토했지만, 30m 단위 구간화에는 격자가 너무 성겨서
+경사도가 계단식으로 튀는 문제가 있었습니다(실측 비교 결과 90m 대비 5m TIN DEM이 구간 경사도
+분산을 약 83% 줄임). 그래서 **팀 표준은 국토정보플랫폼 등고선 SHP를 TIN(Delaunay) 선형보간해
+직접 5m DEM을 만드는 방식**으로 확정했습니다.
 
-1. map.ngii.go.kr 회원가입 → 로그인
+1. **국토정보플랫폼**(https://map.ngii.go.kr) 회원가입 → 로그인
 2. 상단 메뉴 **"공간정보받기"** 클릭
 3. 좌측 도구에서 **"영역 > 사각형"**(또는 다각형) 선택 → 지도에서 걸은 구간을 감싸는 범위를 드래그
-4. 결과 목록에서 **"공개DEM"** 선택 → 연도(최신 권장)와 도엽을 선택해 다운로드
+4. 결과 목록에서 **"수치지형도"** (1:5,000, Ver2.0, SHP 형식) 선택 → 도엽을 골라 다운로드 후 압축 해제
 
 > **주의 — 도엽(지도 격자) 단위로 나뉘어 있습니다.**
 > 선택한 사각형이 걸치는 도엽만 검색 결과에 나옵니다. 즉 팀원들이 서로 멀리 떨어진 지역에서
-> 측정했다면(예: 한 명은 용인, 한 명은 다른 시/군), **DEM도 지역별로 각각 따로 받아야 합니다.**
-> `data/raw/*.gpx`의 좌표 범위를 먼저 확인하고, 그 범위를 커버하는 도엽을 전부 받으세요.
->
-> 파일 형식은 `.tif` / `.img` / `.asc` 중 하나로 받아지며, 좌표계는 보통 GRS80 중부원점(EPSG:5186) 등
-> GPX의 WGS84(EPSG:4326)와 다릅니다 — `dem.py`가 자동으로 좌표 변환하니 신경 쓰지 않아도 됩니다.
-> `.prj`, `.tfw` 같은 부속 파일이 같이 왔다면 DEM 파일과 **같은 폴더**에 두세요.
+> 측정했다면(예: 한 명은 용인, 한 명은 다른 시/군), **각자 자기 지역 등고선을 따로 받아야 합니다.**
+> `data/raw/*.gpx`의 좌표 범위를 먼저 확인하고, 그 범위를 커버하는 도엽을 받으세요.
 
-받은 DEM 파일들은 한 폴더(예: `data/dem/`)에 모아두면 됩니다. 이 폴더는 `.gitignore`에 등록되어
-있어 git에는 올라가지 않으니, **팀원마다 각자 다운로드해서 로컬에 준비**해야 합니다.
+5. 압축을 풀면 SHP 레이어가 여러 개 나오는데(`N3A_*`=면, `N3L_*`=선, `N3P_*`=점), 그중
+   **등고선 레이어는 `N3L_F0010000.shp`**입니다. 이 파일명과 고도 필드명(`등고수치`)은
+   국토지리정보원의 전국 공통 표준 코드라 어느 지역을 받아도 동일합니다.
+6. 아래 명령으로 자기 지역 5m DEM을 바로 생성합니다(프로젝트 루트에서):
+
+```bash
+python -m src.dem_utils \
+  --contour-shp "<압축 푼 폴더>/N3L_F0010000.shp" \
+  --out data/raw/dem/dem_5m_<자기지역코드>.tif
+```
+
+> DEM 결과 GeoTIFF는 팀원마다 지역이 달라 용량 문제도 있어 `.gitignore`(`data/raw/dem/`)에
+> 등록되어 git에는 올라가지 않습니다. **팀원마다 각자 생성해서 로컬에 준비**해야 합니다.
+> 원본 등고선 SHP(수십 MB)도 커밋하지 않고 로컬에만 둡니다.
 
 ## 1. 실행
 
 프로젝트 루트에서:
 
 ```bash
-# 1) GPX + DEM -> 구간별 테이블
-python -m src.build_dataset --dem-dir data/dem
+# 1) GPX + DEM -> 구간별 테이블 (data/raw/dem/에 자기 지역 DEM을 넣어둔 상태)
+python -m src.build_dataset --dem-dir data/raw/dem
 
 # 2) speed_ratio / k_slope 회귀 / v_user(Shrinkage) 추정
 python -m src.model_speed
@@ -85,8 +98,8 @@ python -m src.model_speed
 
 ## 2. 모듈별 역할
 
-- **`gpx_parser.py`** — GPX 파일명(`이름_카테고리_회차.gpx`)에서 메타데이터를 파싱하고, 트랙포인트(위도·경도·시간)를 표로 만듭니다. macOS 파일명 유니코드(NFC/NFD 혼재) 이슈를 정규화해서 처리합니다.
-- **`dem_utils.py`** — 국토정보플랫폼 등고선 SHP에서 TIN(Delaunay) 선형보간으로 5m DEM(GeoTIFF)을 만들고(`build_dem_from_contours`), WGS84 좌표를 DEM 좌표계로 변환해 픽셀 고도값을 샘플링합니다(`sample_dem`). 90m DEM 대비 30m 구간 경사도 분산이 크게 줄어드는 것을 확인해 `build_dataset.py`의 기본 고도 소스로 채택했습니다. (구버전 `dem.py`의 `DEMSampler`는 여러 도엽을 rasterio로 모자이크하는 방식으로, 더 이상 파이프라인에서 쓰이진 않지만 참고용으로 남아 있습니다.)
+- **`gpx_parser.py`** — GPX 파일명(`이름_카테고리_회차[회차].gpx`, "회차" 접미사는 선택)에서 메타데이터를 파싱하고, 트랙포인트(위도·경도·시간)를 표로 만듭니다. macOS 파일명 유니코드(NFC/NFD 혼재) 이슈를 정규화해서 처리합니다.
+- **`dem_utils.py`** — 국토정보플랫폼 등고선 SHP에서 TIN(Delaunay) 선형보간으로 5m DEM(GeoTIFF)을 만들고(`build_dem_from_contours`, CLI: `python -m src.dem_utils`), WGS84 좌표를 DEM 좌표계로 변환해 픽셀 고도값을 샘플링합니다(`sample_dem`). 등고선 밀도가 낮은 구간의 보간 이상치를 찾는 `detect_sparse_artifacts`도 포함. 팀의 확정된 DEM 표준 방식입니다.
 - **`segmentation.py`** — haversine 거리로 누적거리를 계산해 30~50m 단위로 트랙을 구간화하고, 구간별 거리·시간·속도·경사도(%)를 산출합니다.
 - **`build_dataset.py`** — 위 세 모듈을 순서대로 실행하는 진입점. `segments.csv` 생성.
 - **`model_speed.py`** — `segments.csv`를 읽어 `speed_ratio`(=구간속도÷개인 평지속도) 정규화 → pooled 2차 다항회귀로 `k_slope` 적합 → 잔차의 사람별 평균에 Shrinkage(`w_i = n_i/(n_i+k)`)를 적용해 `v_user`(개인별 평지 기준 보행속도)를 추정.

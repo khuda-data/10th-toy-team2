@@ -3,11 +3,18 @@
 등고선(라인) 레이어 정점(x, y, 등고수치)을 Delaunay TIN 기반 선형보간
 (scipy.interpolate.LinearNDInterpolator)으로 격자화해 DEM을 만든다.
 결과 GeoTIFF는 원본 SHP의 CRS(보통 EPSG:5186 등 GRS80/중부원점 계열)를
-그대로 담으므로, src/dem.py의 DEMSampler가 WGS84(EPSG:4326) 좌표를
-알아서 이 CRS로 변환해 샘플링할 수 있다.
+그대로 담으므로, sample_dem()이 WGS84(EPSG:4326) 좌표를 알아서 이
+CRS로 변환해 샘플링한다.
+
+팀 표준 DEM 생성 방식(90m 공개DEM 대비 30m 구간 경사도 분산 약 83% 감소
+확인 후 채택). 자기 지역 등고선 SHP만 있으면 아래처럼 커맨드라인에서
+바로 DEM을 만들 수 있다:
+
+    python -m src.dem_utils --contour-shp <등고선 SHP 경로(N3L_F0010000.shp)> --out <저장 경로>
 """
 from __future__ import annotations
 
+import argparse
 from pathlib import Path
 
 import geopandas as gpd
@@ -92,11 +99,7 @@ def build_dem_from_contours(
 
 
 def sample_dem(dem_tif: str | Path, lon, lat) -> np.ndarray:
-    """WGS84(EPSG:4326) lon/lat 배열 -> DEM 고도(m) 배열.
-
-    src/dem.py의 DEMSampler와 동일한 좌표변환 관례(EPSG:4326 입력)를
-    따른다. 래스터 범위 밖/nodata는 NaN.
-    """
+    """WGS84(EPSG:4326) lon/lat 배열 -> DEM 고도(m) 배열. 래스터 범위 밖/nodata는 NaN."""
     lon_arr = np.atleast_1d(np.asarray(lon, dtype=float))
     lat_arr = np.atleast_1d(np.asarray(lat, dtype=float))
 
@@ -173,3 +176,50 @@ def detect_sparse_artifacts(
         "flagged_lon": list(flon),
         "flagged_lat": list(flat),
     }
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument(
+        "--contour-shp",
+        type=Path,
+        required=True,
+        help="등고선 라인 SHP 경로. 국토정보플랫폼 1:5,000 수치지형도 Ver2.0 패키지 안의 "
+        "N3L_F0010000.shp (전국 공통 표준 코드/필드명)",
+    )
+    parser.add_argument("--out", type=Path, required=True, help="생성할 DEM GeoTIFF 경로")
+    parser.add_argument("--resolution", type=float, default=5.0, help="격자 해상도(m), 기본 5.0")
+    parser.add_argument(
+        "--elevation-field", default=DEFAULT_ELEVATION_FIELD, help="고도값 필드명, 기본 '등고수치'"
+    )
+    parser.add_argument(
+        "--check-artifacts",
+        action="store_true",
+        help="생성 후 등고선 희소 구간 이상치 탐지(detect_sparse_artifacts)도 같이 실행",
+    )
+    args = parser.parse_args()
+
+    print(f"[1/2] TIN 보간 DEM 생성: {args.contour_shp} -> {args.out} ({args.resolution}m)")
+    out_path = build_dem_from_contours(
+        args.contour_shp, args.out, elevation_field=args.elevation_field, resolution=args.resolution
+    )
+    print(f"  -> 저장 완료: {out_path}")
+
+    if args.check_artifacts:
+        print("[2/2] 희소 구간 이상치 체크")
+        result = detect_sparse_artifacts(args.contour_shp, out_path, elevation_field=args.elevation_field)
+        pct = 100 * result["n_flagged"] / result["n_total"]
+        print(
+            f"  이상치 후보 {result['n_flagged']}/{result['n_total']}개 픽셀 ({pct:.3f}%) "
+            f"— 등고선에서 {result['sparse_dist_threshold_m']:.0f}m 이상 떨어지고 "
+            f"경사 {result['slope_threshold_deg']:.0f}도 이상인 지점"
+        )
+    else:
+        print("[2/2] 생략 (--check-artifacts로 희소 구간 이상치 체크 가능)")
+
+    print(f"\n다음 명령으로 파이프라인에 바로 사용할 수 있습니다:")
+    print(f"  python -m src.build_dataset --dem-dir {out_path.parent}")
+
+
+if __name__ == "__main__":
+    main()
