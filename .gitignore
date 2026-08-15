@@ -6,5 +6,3 @@ __pycache__/
 data/dem/
 data/raw/dem/
 
-# build_dataset.py / model_speed.py 실행 결과물 (재생성 가능)
-data/processed/
