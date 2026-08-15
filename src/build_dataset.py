@@ -18,7 +18,7 @@ import pandas as pd
 
 from src.dem_utils import sample_dem
 from src.gpx_parser import parse_all
-from src.segmentation import add_step_distance, build_segments
+from src.segmentation import add_step_distance, build_segments, remove_gps_jumps
 
 
 def sample_dem_df(
@@ -64,21 +64,25 @@ def main() -> None:
     if not dem_paths:
         raise SystemExit(f"{args.dem_dir}에서 DEM 파일(.tif/.tiff/.img/.asc)을 찾지 못했습니다")
 
-    print(f"[1/4] GPX 파싱: {args.raw_dir}")
+    print(f"[1/5] GPX 파싱: {args.raw_dir}")
     points = parse_all(args.raw_dir)
     print(f"  -> {len(points)} 포인트, {points['source_file'].nunique()} 파일")
 
-    print(f"[2/4] DEM 고도 샘플링: {len(dem_paths)}개 타일")
+    print("[2/5] GPS 튐 포인트 제거")
+    points = remove_gps_jumps(points)
+    print(f"  -> {len(points)} 포인트 남음")
+
+    print(f"[3/5] DEM 고도 샘플링: {len(dem_paths)}개 타일")
     points = sample_dem_df(points, dem_paths)
     n_nan = int(points["ele_dem"].isna().sum())
     if n_nan:
         print(f"  경고: DEM 범위를 벗어났거나 nodata인 포인트 {n_nan}개 (NaN)")
 
-    print("[3/4] 누적거리 계산 및 구간화")
+    print("[4/5] 누적거리 계산 및 구간화 (정지구간 제외 이동시간 반영)")
     points = add_step_distance(points)
     segments = build_segments(points, target_m=args.target_m)
 
-    print(f"[4/4] 저장: {args.out}")
+    print(f"[5/5] 저장: {args.out}")
     args.out.parent.mkdir(parents=True, exist_ok=True)
     segments.to_csv(args.out, index=False, encoding="utf-8-sig")
     print(f"  -> {len(segments)}개 구간 저장 완료")

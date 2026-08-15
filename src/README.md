@@ -102,7 +102,7 @@ python -m src.model_speed
 
 - **`gpx_parser.py`** — GPX 파일명(`이름_카테고리_회차[회차].gpx`, "회차" 접미사는 선택)에서 메타데이터를 파싱하고, 트랙포인트(위도·경도·시간)를 표로 만듭니다. macOS 파일명 유니코드(NFC/NFD 혼재) 이슈를 정규화해서 처리합니다.
 - **`dem_utils.py`** — 국토정보플랫폼 등고선 SHP에서 TIN(Delaunay) 선형보간으로 5m DEM(GeoTIFF)을 만들고(`build_dem_from_contours`, CLI: `python -m src.dem_utils`), WGS84 좌표를 DEM 좌표계로 변환해 픽셀 고도값을 샘플링합니다(`sample_dem`). 등고선 밀도가 낮은 구간의 보간 이상치를 찾는 `detect_sparse_artifacts`도 포함. 팀의 확정된 DEM 표준 방식입니다.
-- **`segmentation.py`** — haversine 거리로 누적거리를 계산해 30~50m 단위로 트랙을 구간화하고, 구간별 거리·시간·속도·경사도(%)를 산출합니다.
+- **`segmentation.py`** — haversine 거리로 누적거리를 계산해 30~50m 단위로 트랙을 구간화하고, 구간별 거리·시간·속도·경사도(%)를 산출합니다. GPX 타임스탬프 간격이 불규칙해 생기는 이상치도 여기서 처리합니다: `remove_gps_jumps`가 순간속도 15km/h를 넘는 포인트(GPS 튐)를 원본 포인트 단계에서 제거하고, `build_segments`는 3초 이상 정지구간의 시간을 뺀 `moving_dt_s`(이동시간)로 `speed_mps`를 계산합니다.
 - **`build_dataset.py`** — 위 세 모듈을 순서대로 실행하는 진입점. `segments.csv` 생성.
 - **`model_speed.py`** — `segments.csv`를 읽어 `speed_ratio`(=구간속도÷개인 평지속도) 정규화 → pooled 2차 다항회귀로 `k_slope` 적합 → 잔차의 사람별 평균에 Shrinkage(`w_i = n_i/(n_i+k)`)를 적용해 `v_user`(개인별 평지 기준 보행속도)를 추정.
 
@@ -114,7 +114,7 @@ python -m src.model_speed
 |---|---|
 | `person`, `category`, `trial`, `source_file` | GPX 파일명에서 파싱한 메타데이터 |
 | `segment_id` | 파일 내 구간 순번 |
-| `dist_m`, `dt_s`, `speed_mps` | 구간 거리(m)·경과시간(s)·평균속도(m/s) |
+| `dist_m`, `dt_s`, `moving_dt_s`, `speed_mps` | 구간 거리(m)·실제 경과시간(s)·정지구간 뺀 이동시간(s)·평균속도(m/s, `dist_m/moving_dt_s`) |
 | `elev_start_m`, `elev_end_m`, `slope_pct` | 구간 시작/끝 DEM 고도, 경사도(%) |
 | `start_lat/lon`, `end_lat/lon`, `start_time`, `end_time` | 구간 경계 좌표·시각 |
 
