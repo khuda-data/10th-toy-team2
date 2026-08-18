@@ -2,9 +2,15 @@
 
 설계 결정 (README가 정확한 수식까지 규정하진 않아 아래와 같이 확정함 — 팀 검토 후 조정 가능):
 - "개인 평지속도"(정규화 분모)는 category=='평지' 구간들의 speed_mps 평균(실측 raw값)을 사용.
-- k_slope 회귀: pooled speed_ratio ~ slope_pct + slope_pct^2 (2차 다항회귀, 전원 데이터를 합쳐서 1개 모델).
-- v_user: 그 회귀의 잔차를 사람별로 평균 낸 값에 shrinkage(w_i = n_i/(n_i+k))를 적용해
-  0(전체 평균)과 개인 고유값 사이로 보간한 뒤, 평지속도(m/s) 스케일로 환산.
+- k_slope 회귀: pooled speed_ratio ~ slope_pct + slope_pct^2 (2차 다항회귀).
+  전원 데이터를 그대로 합치면 데이터를 많이 모은 사람(예: 홍민기) 쪽으로 회귀가 쏠리는
+  문제가 있어서, **사람별로 동일한 개수(인원 중 최소 구간 수)만큼만 무작위 추출한
+  "균형 표본"으로 이 곡선만 적합**한다. 잔차/v_user는 이후 각자의 전체 데이터로 계산해서
+  버리지 않는다.
+- v_user: 그 회귀의 잔차(전체 데이터 기준)를 사람별로 평균 낸 값에 shrinkage(w_i = n_i/(n_i+k))를
+  적용해 0(전체 평균)과 개인 고유값 사이로 보간한 뒤, 평지속도(m/s) 스케일로 환산.
+  구간 수가 많은 사람일수록 shrink_w가 커져 개인 고유 패턴이 더 많이 반영된다
+  (데이터 수집량에 따른 "개인화 그라데이션"을 보여주는 지점).
 
 사용법 (프로젝트 루트에서, segments.csv가 이미 있어야 함):
     python -m src.model_speed --segments data/processed/segments.csv
@@ -28,6 +34,21 @@ def add_speed_ratio(segments: pd.DataFrame, v_flat: pd.Series) -> pd.DataFrame:
     df = segments.merge(v_flat, on="person", how="left")
     df["speed_ratio"] = df["speed_mps"] / df["v_flat_raw"]
     return df
+
+
+def sample_balanced_baseline(df: pd.DataFrame, cap: int | None = None, seed: int = 42) -> pd.DataFrame:
+    """pooled k_slope 회귀용 인원별 균형 표본.
+
+    사람별로 최대 cap개까지만 무작위 추출해서, 데이터를 많이 모은 사람의 개인
+    패턴이 "공통 경향"인 것처럼 회귀에 과대 반영되는 것을 막는다. cap 미지정 시
+    사람별 구간 수의 최솟값을 사용(전원이 동일한 가중치로 회귀에 기여).
+    """
+    valid = df.dropna(subset=["speed_ratio", "slope_pct"])
+    counts = valid.groupby("person").size()
+    if cap is None:
+        cap = int(counts.min())
+    parts = [g.sample(n=min(cap, len(g)), random_state=seed) for _, g in valid.groupby("person")]
+    return pd.concat(parts, ignore_index=True)
 
 
 def fit_k_slope(df: pd.DataFrame) -> np.ndarray:
@@ -72,6 +93,10 @@ def main() -> None:
     parser.add_argument("--segments", type=Path, default=Path("data/processed/segments.csv"))
     parser.add_argument("--out", type=Path, default=Path("data/processed/v_user.csv"))
     parser.add_argument("--shrink-k", type=float, default=None, help="미지정 시 사람별 구간수 중앙값을 사용")
+    parser.add_argument(
+        "--baseline-cap", type=int, default=None, help="k_slope 균형 표본 인원별 상한(미지정 시 최소 구간 수)"
+    )
+    parser.add_argument("--seed", type=int, default=42, help="균형 표본 무작위 추출 시드")
     args = parser.parse_args()
 
     segments = pd.read_csv(args.segments)
@@ -80,15 +105,23 @@ def main() -> None:
     v_flat = compute_flat_speed(segments)
     print(v_flat.to_string())
 
-    print("[2/4] speed_ratio 계산 및 k_slope 다항회귀 적합")
+    print("[2/4] speed_ratio 계산 및 k_slope 다항회귀 적합 (인원별 균형 표본)")
     df = add_speed_ratio(segments, v_flat)
-    coef = fit_k_slope(df)
-    valid = df.dropna(subset=["speed_ratio", "slope_pct"])
-    r2 = r_squared(valid["speed_ratio"].to_numpy(), np.polyval(coef, valid["slope_pct"].to_numpy()))
-    print(f"  k_slope coef [2차, 1차, 절편] = {coef}")
-    print(f"  R^2 = {r2:.4f}")
+    baseline = sample_balanced_baseline(df, cap=args.baseline_cap, seed=args.seed)
+    cap_used = baseline.groupby("person").size()
+    print(f"  균형 표본 인원별 구간 수(cap={cap_used.max()}):")
+    print("  " + cap_used.to_string().replace("\n", "\n  "))
 
-    print("[3/4] 잔차 계산 및 사람별 v_user(Shrinkage) 추정")
+    coef = fit_k_slope(baseline)
+    print(f"  k_slope coef [2차, 1차, 절편] = {coef}")
+
+    r2_baseline = r_squared(baseline["speed_ratio"].to_numpy(), np.polyval(coef, baseline["slope_pct"].to_numpy()))
+    valid_full = df.dropna(subset=["speed_ratio", "slope_pct"])
+    r2_full = r_squared(valid_full["speed_ratio"].to_numpy(), np.polyval(coef, valid_full["slope_pct"].to_numpy()))
+    print(f"  R^2 (균형 표본, n={len(baseline)}) = {r2_baseline:.4f}")
+    print(f"  R^2 (전체 데이터, n={len(valid_full)}) = {r2_full:.4f}")
+
+    print("[3/4] 잔차 계산(전체 데이터 기준) 및 사람별 v_user(Shrinkage) 추정")
     df = add_residual(df, coef)
     v_user = estimate_v_user(df, v_flat, shrink_k=args.shrink_k)
     print(v_user.to_string(index=False))
