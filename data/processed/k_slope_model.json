@@ -1,0 +1,13 @@
+{
+  "description": "predicted_ratio(slope_pct) = coef[0]*slope_pct**2 + coef[1]*slope_pct + coef[2]",
+  "coef": [
+    -0.00011395324645933302,
+    -0.005455397985637792,
+    0.9950291414372522
+  ],
+  "baseline_cap": 89,
+  "baseline_n": 534,
+  "seed": 42,
+  "r2_baseline": 0.0823283191628652,
+  "r2_full": 0.01877064949885421
+}

@@ -18,6 +18,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
 import numpy as np
@@ -92,6 +93,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--segments", type=Path, default=Path("data/processed/segments.csv"))
     parser.add_argument("--out", type=Path, default=Path("data/processed/v_user.csv"))
+    parser.add_argument(
+        "--k-slope-out", type=Path, default=Path("data/processed/k_slope_model.json"), help="k_slope 계수 저장 경로"
+    )
     parser.add_argument("--shrink-k", type=float, default=None, help="미지정 시 사람별 구간수 중앙값을 사용")
     parser.add_argument(
         "--baseline-cap", type=int, default=None, help="k_slope 균형 표본 인원별 상한(미지정 시 최소 구간 수)"
@@ -126,9 +130,22 @@ def main() -> None:
     v_user = estimate_v_user(df, v_flat, shrink_k=args.shrink_k)
     print(v_user.to_string(index=False))
 
-    print(f"[4/4] 저장: {args.out}")
+    print(f"[4/4] 저장: {args.out}, {args.k_slope_out}")
     args.out.parent.mkdir(parents=True, exist_ok=True)
     v_user.to_csv(args.out, index=False, encoding="utf-8-sig")
+
+    k_slope_model = {
+        "description": "predicted_ratio(slope_pct) = coef[0]*slope_pct**2 + coef[1]*slope_pct + coef[2]",
+        "coef": coef.tolist(),
+        "baseline_cap": int(cap_used.max()),
+        "baseline_n": len(baseline),
+        "seed": args.seed,
+        "r2_baseline": r2_baseline,
+        "r2_full": r2_full,
+    }
+    args.k_slope_out.parent.mkdir(parents=True, exist_ok=True)
+    with open(args.k_slope_out, "w", encoding="utf-8") as f:
+        json.dump(k_slope_model, f, ensure_ascii=False, indent=2)
 
 
 if __name__ == "__main__":
