@@ -219,7 +219,16 @@ def join_cycles(cw: pd.DataFrame, inter: pd.DataFrame,
     for c, col in [("lanes", "차로수"), ("length_m", "횡단보도연장")]:
         cw[c] = pd.to_numeric(cw[col], errors="coerce")
     cw["has_signal"] = cw["보행자신호등유무"].astype(str).str.contains("있|^Y$", regex=True)
-    cw["push_btn"] = cw["보행자작동신호기유무"].astype(str).str.contains("있|^Y$", regex=True)
+
+    # 버튼식은 '있음/없음/미상' 3값으로 다뤄야 한다. 영통구는 이 칸이 전부
+    # 공백(미상)이라, 예전처럼 '없음'으로 뭉개면 균등도착이 깨지는 지점을 놓친다.
+    _pb = cw["보행자작동신호기유무"].astype(str).str.strip()
+    cw["push_btn"] = np.where(_pb.str.contains("있|^Y$", regex=True), "있음",
+                              np.where(_pb.str.contains("없|^N$", regex=True),
+                                       "없음", "미상"))
+    # 교통섬이 있으면 2단 횡단이라 대기가 두 번 생길 수 있다(모델 미반영).
+    cw["island"] = cw["교통섬유무"].astype(str).str.strip().isin(["Y", "있음"])
+    cw["kind"] = cw["횡단보도종류"].astype(str).str.strip()
 
     D = _hav(cw["위도"].values[:, None], cw["경도"].values[:, None],
              inter["위도"].values[None, :], inter["경도"].values[None, :])
@@ -478,7 +487,12 @@ def export(out: Path, d: pd.DataFrame, ct: pd.DataFrame,
             "수원시가 횡단보도 표준데이터의 녹색/적색신호시간을 제출하지 않아, "
             "주기는 신호등 표준데이터(차량신호)에서 공간결합으로 가져왔다.",
             "균등도착 가정은 검증하지 않았다(실측 데이터 없음).",
-            "보행자작동신호기(버튼식)는 균등도착이 성립하지 않는다.",
+            "버튼식 여부는 표준데이터 칸이 공백이라 미상이다(0개가 아님). "
+            "버튼식이 섞여 있으면 그 지점은 균등도착이 성립하지 않는다.",
+            f"교통섬 있는 신호 횡단보도 {int(d[d['has_signal']]['island'].sum())}개는 "
+            f"2단 횡단일 수 있으나 대기를 1회로 계산했다(과소추정 방향).",
+            "타 시군(의정부·구리·포천) 정답 대조 결과 이 방법은 대기를 "
+            "약 +7% 과대추정하는 경향이 있다(개별 횡단보도 MAE 0.4~8.7초).",
         ],
     }
     p.write_text(json.dumps(obj, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -536,8 +550,13 @@ def write_report(out: Path, d: pd.DataFrame, ct: pd.DataFrame,
         "  **보행 녹색시간 `G`는 실측이 아니라 규정식 추정값**입니다.",
         "- `E[W] = R²/(2C)`는 균등도착 가정에서 나온 식입니다. 이번 산출에서는",
         "  실측 데이터가 없어 이 가정을 검증하지 않고 그대로 적용했습니다.",
-        f"- 보행자작동신호기(버튼식) {int(d['push_btn'].sum())}개는 균등도착이",
-        "  성립하지 않으므로 별도 취급이 필요합니다.",
+        "- **버튼식 여부는 미상입니다(0개가 아님).** 표준데이터의 해당 칸이 전부",
+        "  공백이라 확인할 수 없습니다. 버튼식이 섞여 있으면 그 지점은 균등도착이",
+        "  성립하지 않습니다.",
+        f"- 교통섬이 있는 신호 횡단보도 {int(d[d['has_signal']]['island'].sum())}개는",
+        "  2단 횡단일 수 있으나 대기를 1회로 계산했습니다 — 과소추정 방향입니다.",
+        "- 타 시군(의정부·구리·포천) 정답 대조 결과 이 방법은 대기를 약 **+7% 과대추정**",
+        "  하는 경향이 있습니다. 위 과소추정 요인과 방향이 반대라 일부 상쇄됩니다.",
         "- 표준데이터 갱신주기가 반기여서 최근 신호 개선은 미반영일 수 있습니다.", "",
         "## 7. 경로 ETA 에서 쓰는 법", "",
         "```python",
@@ -609,11 +628,12 @@ def main() -> int:
     print(summ.to_string(index=False))
 
     keep = ["횡단보도관리번호", "소재지도로명주소", "위도", "경도", "lanes",
-            "length_m", "차로구간", "has_signal", "push_btn", "주기_s",
-            "주기출처", "거리_m", "녹색_G_s", "적색_R_s", "기대대기_s"]
+            "length_m", "차로구간", "has_signal", "push_btn", "island", "kind",
+            "주기_s", "주기출처", "거리_m", "녹색_G_s", "적색_R_s", "기대대기_s"]
     out_d = d[[c for c in keep if c in d.columns]].rename(columns={
         "lanes": "차로수", "length_m": "횡단거리_m", "has_signal": "보행신호",
-        "push_btn": "버튼식", "거리_m": "교차로거리_m"})
+        "push_btn": "버튼식", "island": "교통섬", "kind": "횡단보도종류",
+        "거리_m": "교차로거리_m"})
     out_d.to_csv(a.out / "횡단보도별_신호대기.csv", index=False,
                  encoding="utf-8-sig")
     summ.to_csv(a.out / "차로수별_대기요약.csv", index=False,
@@ -642,9 +662,21 @@ def main() -> int:
     print(f"  n={len(g)}  평균 {g.mean():.1f}초")
     print(f"  10% {q[.1]:.1f} · 25% {q[.25]:.1f} · 50% {q[.5]:.1f} "
           f"· 75% {q[.75]:.1f} · 90% {q[.9]:.1f} 초")
-    nb = int(d["push_btn"].sum())
-    if nb:
-        _warn(f"보행자작동신호기(버튼식) {nb}개 — 균등도착 모델 비적용 대상")
+    sig = d[d["has_signal"]]
+    pb = sig["push_btn"].value_counts().to_dict()
+    print(f"\n  버튼식 여부: {pb}")
+    if pb.get("미상", 0):
+        _warn(f"버튼식 여부 미상 {pb['미상']}개 — 표준데이터의 해당 칸이 공백입니다. "
+              f"'없음'이 아니라 '모름'이므로, 버튼식이 섞여 있으면 "
+              f"그 지점은 균등도착이 성립하지 않습니다.")
+    if pb.get("있음", 0):
+        _warn(f"버튼식 {pb['있음']}개 — 균등도착 모델 비적용 대상")
+
+    n_isl = int(sig["island"].sum())
+    if n_isl:
+        _warn(f"교통섬 있는 횡단보도 {n_isl}개 ({n_isl/len(sig):.0%}) — "
+              f"2단 횡단이면 대기가 두 번 생길 수 있으나 모델은 1회로 봅니다. "
+              f"→ 이만큼은 과소추정입니다.")
 
     if not a.no_figures:
         figs = make_figures(a.out, d, bc, rs)
