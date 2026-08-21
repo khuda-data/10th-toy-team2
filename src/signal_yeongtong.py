@@ -664,8 +664,13 @@ def main() -> int:
 
     _h("2. 신호등 → 주기")
     _, inter = signal_cycles(sg_raw)
-    inter.round(1).to_csv(a.out / "교차로_주기.csv", index=False,
-                          encoding="utf-8-sig")
+    # roads 는 파이썬 set 이라 그대로 쓰면 프로세스마다 순서가 달라진다
+    # (해시 시드 무작위화). 정렬해 문자열로 굳혀야 재현 가능한 산출물이 된다.
+    _inter_out = inter.round(1).copy()
+    _inter_out["roads"] = _inter_out["roads"].map(
+        lambda s: "|".join(sorted(s)) if isinstance(s, (set, frozenset)) else s)
+    _inter_out.to_csv(a.out / "교차로_주기.csv", index=False,
+                      encoding="utf-8-sig")
 
     _h("3. 횡단보도 ↔ 교차로 공간결합")
     cw = join_cycles(cw_raw, inter, a.radius)
