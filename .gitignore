@@ -6,3 +6,8 @@ __pycache__/
 data/dem/
 data/raw/dem/
 
+
+# 신호대기 모델링: 전국 표준데이터 원본은 각 10MB+ 라 올리지 않음
+# (data/raw/ 의 영통구 추출본으로 재현 가능)
+전국*표준데이터.csv
+out/
