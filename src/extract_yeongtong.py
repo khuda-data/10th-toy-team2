@@ -10,8 +10,8 @@
 이 파일은 "어느 행을 썼는가"만 고정하는 역할이다.
 
 실행:
-  python extract_yeongtong.py
-  python extract_yeongtong.py --src <전국파일폴더> --out <저장폴더>
+  python src/extract_yeongtong.py
+  python src/extract_yeongtong.py --src <전국파일폴더> --out <저장폴더>
 """
 
 from __future__ import annotations
@@ -47,11 +47,10 @@ def extract(src: Path, dst: Path) -> pd.DataFrame:
     dst.parent.mkdir(parents=True, exist_ok=True)
     out.to_csv(dst, index=False, encoding="utf-8-sig")
 
-    base = d["데이터기준일자"].dropna().unique() if "데이터기준일자" in d else []
     print(f"  {src.name}")
     print(f"    전체 {len(d):,}행 → 영통구 {len(out):,}행  ({dst.name})")
-    print(f"    기준일자 {sorted(out['데이터기준일자'].dropna().unique())[:3]}"
-          if "데이터기준일자" in out else "")
+    if "데이터기준일자" in out:
+        print(f"    기준일자 {sorted(out['데이터기준일자'].dropna().unique())[:3]}")
     if len(d) == 50000:
         print(f"    ※ 전국 파일이 정확히 50,000행 = data.go.kr 그리드 상한. "
               f"수원시 행은 이 안에 온전히 포함됨(확인 완료).")

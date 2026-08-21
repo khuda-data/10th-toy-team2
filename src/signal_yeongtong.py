@@ -19,6 +19,17 @@
      방향마다 다른 것은 녹색 배분이지 주기가 아니다.
 
 ────────────────────────────────────────────────────────────
+처리 흐름
+────────────────────────────────────────────────────────────
+  1. 영통구 추출
+  2. 신호등화시간 → 주기 C, 점멸등·이상치 제외, 40m 로 교차로 군집화
+  3. 횡단보도 ↔ 교차로 결합
+       1순위  반경 75m 최근접        2순위  같은 노선 150m 까지
+       못 찾으면 영통구 자체 차로수별 중앙값
+  4. 수식 적용 (아래)
+  5~7. 기존 가정 대비 / 반경 민감도 / 분포
+
+────────────────────────────────────────────────────────────
 수학식 (기획안 그대로)
 ────────────────────────────────────────────────────────────
   보행 녹색   G = 진입 7초 + 횡단거리 ÷ 1.0 m/s     (경찰청 매뉴얼)
@@ -26,14 +37,19 @@
   기대 대기   E[W] = R² / (2C)                      (기획안 B절)
 
   E[W] 는 "주기 안 아무 때나 도착한다"는 균등도착에서 유도된 값이다.
-  이번 산출에서는 그 가정의 검증을 하지 않고 공식을 그대로 적용한다
-  (실측 데이터가 아직 없으므로). 따라서 분산·구간은 내지 않고 기대값만 낸다.
+  실측 데이터가 없어 이 가정은 검증하지 않고 그대로 적용했다.
+  따라서 분산·구간은 내지 않고 기대값만 낸다.
+
+  ⚠️ 타 시군(의정부·구리·포천) 정답 대조 결과 이 방법은 대기를 약 +7%
+     과대추정한다. 집계 수준에서만 쓰고, 개별 횡단보도 예측에는 쓰지 말 것
+     (개별 MAE 5~9초). 자세한 내용은 docs/신호대기_모델링_진행기록.md 5절.
 
 ────────────────────────────────────────────────────────────
 실행
 ────────────────────────────────────────────────────────────
-  python signal_yeongtong.py
-  python signal_yeongtong.py --radius 100      # 공간결합 반경 조정
+  python src/signal_yeongtong.py                 # 전체
+  python src/signal_yeongtong.py --radius 100    # 근접 반경 조정
+  python src/signal_yeongtong.py --no-figures    # 그림 생략
 """
 
 from __future__ import annotations
@@ -360,23 +376,28 @@ def apply_formula(cw: pd.DataFrame) -> pd.DataFrame:
     d = cw.copy()
     est = d["length_m"].isna() | (d["length_m"] <= 0)
     if est.any():
+        # 영통구는 연장이 100% 채워져 있어 여기 걸리지 않는다.
+        # 다른 지역에 돌릴 때를 위한 방어이므로 조용히 넘기지 않고 알린다.
+        _warn(f"횡단거리 결측 {int(est.sum())}개 — 차로수로 추정합니다 "
+              f"(3.5m/차로 + 2m).")
         d.loc[est, "length_m"] = 3.5 * d.loc[est, "lanes"].fillna(2) + 2.0
 
-    G, R, W = [], [], []
+    G, R, W, capped = [], [], [], []
     for _, r in d.iterrows():
         if not bool(r["has_signal"]):
             G.append(np.nan); R.append(np.nan); W.append(0.0)
+            capped.append(False)
             continue
         C = float(r["주기_s"])
-        g = min(sw.green_time(r["length_m"]), C * sw.MAX_GREEN_FRAC)
+        need = sw.green_time(r["length_m"])          # 규정식이 요구하는 녹색
+        g = min(need, C * sw.MAX_GREEN_FRAC)         # 주기의 60% 로 상한
         rr = C - g
         G.append(g); R.append(rr); W.append(sw.wait_mean(rr, C))
+        capped.append(need > C * sw.MAX_GREEN_FRAC)
     d["녹색_G_s"] = np.round(G, 1)
     d["적색_R_s"] = np.round(R, 1)
     d["기대대기_s"] = np.round(W, 1)
-    d["녹색상한적용"] = [bool(r["has_signal"]) and
-                    sw.green_time(r["length_m"]) > float(r["주기_s"]) * sw.MAX_GREEN_FRAC
-                    for _, r in d.iterrows()]
+    d["녹색상한적용"] = capped
     return d
 
 
@@ -388,10 +409,12 @@ def baseline_compare(d: pd.DataFrame) -> pd.DataFrame:
     """
     std = {"3차로 이하": 90.0, "4~5차로": 120.0, "6차로 이상": 150.0}
     g = d[d["has_signal"]].copy()
+    # 행마다 그 차로구간의 옛 표준 주기를 붙여두면 그룹·전체를 같은 식으로 다룰 수 있다
+    g["_C0"] = g["차로구간"].astype(str).map(std).astype(float)
+
     rows = []
     for lab, s in list(g.groupby("차로구간", observed=True)) + [("전체", g)]:
-        C0 = s["차로구간"].astype(str).map(std).astype(float) \
-            if lab == "전체" else pd.Series(std[str(lab)], index=s.index)
+        C0 = s["_C0"]
         G0 = np.minimum(sw.ENTRY_TIME_S + s["length_m"] / sw.DESIGN_WALK_MS,
                         C0 * sw.MAX_GREEN_FRAC)
         W0 = (C0 - G0) ** 2 / (2 * C0)
@@ -428,28 +451,19 @@ def radius_sensitivity(cw_raw: pd.DataFrame, inter: pd.DataFrame,
 
 def summarize(d: pd.DataFrame) -> pd.DataFrame:
     """차로수 구간별 대기 요약 — 경로 ETA 에서 참조할 표."""
+    def row(lab, s):
+        return {"차로구간": str(lab), "n": len(s),
+                "횡단거리_중앙값": round(float(s["length_m"].median()), 1),
+                "주기_중앙값": round(float(s["주기_s"].median()), 1),
+                "녹색_중앙값": round(float(s["녹색_G_s"].median()), 1),
+                "적색_중앙값": round(float(s["적색_R_s"].median()), 1),
+                "기대대기_평균": round(float(s["기대대기_s"].mean()), 1),
+                "기대대기_중앙값": round(float(s["기대대기_s"].median()), 1)}
+
     g = d[d["has_signal"]]
-    rows = []
-    for lab, s in g.groupby("차로구간", observed=True):
-        rows.append({
-            "차로구간": str(lab), "n": len(s),
-            "횡단거리_중앙값": round(float(s["length_m"].median()), 1),
-            "주기_중앙값": round(float(s["주기_s"].median()), 1),
-            "녹색_중앙값": round(float(s["녹색_G_s"].median()), 1),
-            "적색_중앙값": round(float(s["적색_R_s"].median()), 1),
-            "기대대기_평균": round(float(s["기대대기_s"].mean()), 1),
-            "기대대기_중앙값": round(float(s["기대대기_s"].median()), 1),
-        })
-    rows.append({
-        "차로구간": "전체", "n": len(g),
-        "횡단거리_중앙값": round(float(g["length_m"].median()), 1),
-        "주기_중앙값": round(float(g["주기_s"].median()), 1),
-        "녹색_중앙값": round(float(g["녹색_G_s"].median()), 1),
-        "적색_중앙값": round(float(g["적색_R_s"].median()), 1),
-        "기대대기_평균": round(float(g["기대대기_s"].mean()), 1),
-        "기대대기_중앙값": round(float(g["기대대기_s"].median()), 1),
-    })
-    return pd.DataFrame(rows)
+    return pd.DataFrame([row(lab, s)
+                         for lab, s in g.groupby("차로구간", observed=True)]
+                        + [row("전체", g)])
 
 
 # ─────────────────────────────────────────────────────────────
@@ -462,6 +476,7 @@ def make_figures(out: Path, d: pd.DataFrame, bc: pd.DataFrame,
     try:
         import matplotlib
         matplotlib.use("Agg")
+        import matplotlib.font_manager as fm   # pyplot 이 간접 import 하지만 명시한다
         import matplotlib.pyplot as plt
     except ImportError:
         _warn("matplotlib 이 없어 그림을 건너뜁니다.")
@@ -470,7 +485,7 @@ def make_figures(out: Path, d: pd.DataFrame, bc: pd.DataFrame,
     # 한글 폰트. 없으면 라벨이 네모로 나오므로 확인 후 경고한다.
     for f in ("Malgun Gothic", "AppleGothic", "NanumGothic"):
         try:
-            matplotlib.font_manager.findfont(f, fallback_to_default=False)
+            fm.findfont(f, fallback_to_default=False)
             plt.rcParams["font.family"] = f
             break
         except Exception:
@@ -499,7 +514,6 @@ def make_figures(out: Path, d: pd.DataFrame, bc: pd.DataFrame,
     fig, ax = plt.subplots(figsize=(7, 4.2))
     ax.bar(x - w/2, b["기존가정_대기"], w, label="기존 표준값 가정", color="#BAB0AC")
     ax.bar(x + w/2, b["실측주기_대기"], w, label="공공데이터 실측주기", color="#4C78A8")
-    # '차이_%' 는 파이썬 식별자가 못 돼 itertuples 가 이름을 바꾼다. 딕셔너리로 읽는다.
     for i, (_, r) in enumerate(b.iterrows()):
         ax.text(i + w / 2, r["실측주기_대기"] + 1, f"+{r['차이_%']:.0f}%",
                 ha="center", fontsize=9, color="#E45756")
@@ -520,7 +534,10 @@ def make_figures(out: Path, d: pd.DataFrame, bc: pd.DataFrame,
                     ha="center", fontsize=8, color="#666")
     ax.set_xlabel("횡단보도↔교차로 결합 반경 (m)")
     ax.set_ylabel("평균 기대대기 (초)")
-    ax.set_title("공간결합 반경 민감도 — 매칭률 39→81%에도 결과 안정")
+    # 제목의 매칭률은 반드시 데이터에서 뽑는다. 예전에 하드코딩해 뒀다가
+    # 매칭 방식을 바꾼 뒤 그림만 옛 수치(39→81%)를 말하고 있었다.
+    ax.set_title(f"공간결합 반경 민감도 — 매칭률 "
+                 f"{rs['매칭률_%'].min():.0f}→{rs['매칭률_%'].max():.0f}%에도 결과 안정")
     ax.grid(alpha=.3); fig.tight_layout()
     p = out / "fig_반경민감도.png"; fig.savefig(p, dpi=150); plt.close(fig)
     paths.append(p)
