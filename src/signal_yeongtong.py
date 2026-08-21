@@ -88,10 +88,27 @@ CYCLE_SANE = (40.0, 300.0)
 #: 신호등 여러 개를 한 교차로로 묶는 거리(m).
 INTERSECTION_M = 40.0
 
-#: 횡단보도 ↔ 교차로 결합 반경(m).
+#: 횡단보도 ↔ 교차로 결합 반경(m) — 도로명이 다를 때.
 #: 두 데이터셋을 다른 부서가 등록해 좌표 기준이 달라(신호주 vs 횡단보도 중심)
 #: 최근접거리 중앙값이 75m 다. 대형 교차로의 대각 길이를 감안한 값.
 MATCH_M = 75.0
+
+#: 도로명이 같을 때만 허용하는 확장 반경(m). MATCH_M 안에서 못 찾은 것만 줍는다.
+#:
+#: 근거 — 같은 노선의 신호는 연동제어로 주기를 공유한다.
+#:   노선명이 주기 분산을 설명하는 비율: 영통 44% · 의정부 37% · 구리 48%
+#:
+#: 150m 로 정한 근거 — 정답을 아는 도시(의정부)에서 새로 매칭된 횡단보도의
+#: 주기 오차를 대체값(차로수별 중앙값)과 비교했다.
+#:      125m  신규  5개  MAE 27.6초  (대체 38.0초)
+#:      150m  신규 11개  MAE 19.6초  (대체 42.9초)   ← 채택
+#:      200m  신규 28개  MAE 36.9초  (대체 42.9초)   개선폭 급감
+#: 200m 는 커버리지는 늘지만 먼 교차로를 끌어와 정확도가 떨어진다.
+MATCH_ROAD_M = 150.0
+
+#: ⚠️ '번길'을 떼어 상위 도로로 묶으면 안 된다.
+#: 간선(광교로)과 그 이면도로(광교로42번길)는 주기가 실제로 다르다.
+#: 번길 제거 시 설명력이 영통 44%→19%, 구리 48%→29% 로 떨어진다.
 
 #: 차로수 구간 라벨.
 LANE_BINS = [-np.inf, 3, 5, np.inf]
@@ -192,11 +209,17 @@ def signal_cycles(sg: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
         cid += 1
     ok["교차로"] = cluster
 
+    ok["road"] = ok["도로노선명"].fillna("").astype(str).str.strip()
+
     inter = (ok.groupby("교차로")
              .agg(위도=("위도", "mean"), 경도=("경도", "mean"),
                   신호주수=("C", "size"), 주기_s=("C", "median"),
                   주기_편차=("C", "std"))
              .reset_index())
+    # 한 교차로는 여러 도로가 만나는 지점이라 노선명이 여럿일 수 있다.
+    # 집합으로 들고 있어야 어느 쪽 도로의 횡단보도든 매칭된다.
+    roads = ok.groupby("교차로")["road"].apply(lambda s: set(x for x in s if x))
+    inter["roads"] = inter["교차로"].map(roads)
     print(f"    → 교차로 {len(inter)}곳으로 묶임 "
           f"(신호주 평균 {len(ok)/len(inter):.1f}개/교차로)")
 
@@ -230,21 +253,62 @@ def join_cycles(cw: pd.DataFrame, inter: pd.DataFrame,
     cw["island"] = cw["교통섬유무"].astype(str).str.strip().isin(["Y", "있음"])
     cw["kind"] = cw["횡단보도종류"].astype(str).str.strip()
 
+    cw["road"] = cw["도로명"].fillna("").astype(str).str.strip()
+
     D = _hav(cw["위도"].values[:, None], cw["경도"].values[:, None],
              inter["위도"].values[None, :], inter["경도"].values[None, :])
-    j = D.argmin(axis=1)
-    cw["거리_m"] = np.round(D[np.arange(len(cw)), j], 1)
-    cw["주기_s"] = inter["주기_s"].values[j]
-    cw["교차로"] = inter["교차로"].values[j]
-    far = cw["거리_m"] > radius
-    cw.loc[far, ["주기_s", "교차로"]] = np.nan
-    cw["주기출처"] = np.where(far, "미매칭", "신호등 실측")
+    cyc = inter["주기_s"].values
+    iid = inter["교차로"].values
+    has_road = "roads" in inter.columns
+    iroads = inter["roads"].tolist() if has_road else [set()] * len(inter)
 
-    n_sig = int(cw["has_signal"].sum())
-    n_hit = int((~far & cw["has_signal"]).sum())
+    # 2단계 매칭. 순서가 중요하다.
+    #  1순위  반경 radius 안 최근접 교차로 (도로명 무관)
+    #  2순위  1순위가 없을 때만, 도로명이 같은 교차로를 radius_road 까지 확장
+    #
+    # 도로명을 1순위로 두면 '더 가까운 다른 도로 교차로'를 밀어내고
+    # 더 먼 같은 도로 교차로를 고르게 되는데, 정답 대조에서 이쪽이 더 나빴다
+    # (의정부 공통 MAE 18.1 → 18.2). 그래서 도로명은 '못 찾은 것만 줍는' 용도로만 쓴다.
+    # 이렇게 하면 기존 매칭은 그대로 두고 커버리지만 늘어난다(악화 불가능).
+    road_radius = max(radius, MATCH_ROAD_M) if has_road else radius
+    n = len(cw)
+    m_cyc = np.full(n, np.nan)
+    m_iid = np.full(n, np.nan)
+    m_dist = np.full(n, np.nan)
+    m_src = np.array(["미매칭"] * n, dtype=object)
+
+    for i in range(n):
+        d = D[i]
+        near = d <= radius
+        if near.any():                                   # 1순위: 근접
+            k = int(np.where(near, d, np.inf).argmin())
+            m_cyc[i], m_iid[i], m_dist[i] = cyc[k], iid[k], d[k]
+            m_src[i] = "근접"
+            continue
+        r = cw["road"].iat[i]
+        if r and has_road and road_radius > radius:      # 2순위: 같은 노선 확장
+            same = np.array([r in s for s in iroads]) & (d <= road_radius)
+            if same.any():
+                k = int(np.where(same, d, np.inf).argmin())
+                m_cyc[i], m_iid[i], m_dist[i] = cyc[k], iid[k], d[k]
+                m_src[i] = "동일노선 확장"
+
+    cw["거리_m"] = np.round(m_dist, 1)
+    cw["주기_s"] = m_cyc
+    cw["교차로"] = m_iid
+    cw["주기출처"] = m_src
+
+    sig = cw["has_signal"]
+    n_sig = int(sig.sum())
+    hit = sig & (cw["주기출처"] != "미매칭")
     print(f"  횡단보도 {len(cw)}개 (보행신호 있음 {n_sig}개)")
-    print(f"    반경 {radius:.0f}m 안에서 주기 확보  {n_hit}/{n_sig}개 "
-          f"({n_hit/n_sig:.0%})")
+    print(f"    주기 확보  {int(hit.sum())}/{n_sig}개 ({hit.sum()/n_sig:.0%})")
+    if has_road:
+        for lab in ("근접", "동일노선 확장"):
+            k = int((sig & (cw["주기출처"] == lab)).sum())
+            if k:
+                med = cw.loc[sig & (cw["주기출처"] == lab), "거리_m"].median()
+                print(f"      {lab:<10} {k:>4}개   결합거리 중앙 {med:.0f}m")
     return cw
 
 
@@ -351,7 +415,7 @@ def radius_sensitivity(cw_raw: pd.DataFrame, inter: pd.DataFrame,
     rows = []
     for r in radii:
         c = join_cycles(cw_raw, inter, float(r))
-        n_hit = int((c["주기출처"].eq("신호등 실측") & c["has_signal"]).sum())
+        n_hit = int((~c["주기출처"].eq("미매칭") & c["has_signal"]).sum())
         c, _ = fill_missing(c)
         g = apply_formula(c)
         g = g[g["has_signal"]]
