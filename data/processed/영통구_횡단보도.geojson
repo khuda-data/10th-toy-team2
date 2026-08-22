@@ -1,0 +1,7025 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0671052,
+     37.26871276
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0307",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 32.9,
+    "차로수": 10.0,
+    "주기_s": 180.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0638484,
+     37.26923133
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0306",
+    "기대대기_s": 54.8,
+    "보행신호": "有",
+    "횡단거리_m": 32.5,
+    "차로수": 11.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0602325,
+     37.27020164
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0305",
+    "기대대기_s": 50.2,
+    "보행신호": "有",
+    "횡단거리_m": 38.6,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0600544,
+     37.2706179
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0304",
+    "기대대기_s": 57.9,
+    "보행신호": "有",
+    "횡단거리_m": 28.6,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.058003,
+     37.27138704
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0303",
+    "기대대기_s": 53.9,
+    "보행신호": "有",
+    "횡단거리_m": 33.7,
+    "차로수": 10.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0563389,
+     37.27204288
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0302",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 36.5,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0542033,
+     37.27316271
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0301",
+    "기대대기_s": 55.5,
+    "보행신호": "有",
+    "횡단거리_m": 31.6,
+    "차로수": 10.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0532651,
+     37.27349637
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0300",
+    "기대대기_s": 57.0,
+    "보행신호": "有",
+    "횡단거리_m": 29.8,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0506916,
+     37.2736813
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0299",
+    "기대대기_s": 57.4,
+    "보행신호": "有",
+    "횡단거리_m": 29.3,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0506102,
+     37.27381531
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0298",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 5.2,
+    "차로수": 1.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0502503,
+     37.27382622
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0297",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 6.5,
+    "차로수": 1.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0497516,
+     37.273829
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0296",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 7.1,
+    "차로수": 1.0,
+    "주기_s": 180.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.048801,
+     37.27307914
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0295",
+    "기대대기_s": 57.8,
+    "보행신호": "有",
+    "횡단거리_m": 28.7,
+    "차로수": 10.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0478349,
+     37.27371327
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0294",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 5.9,
+    "차로수": 1.0,
+    "주기_s": 180.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0475467,
+     37.27390261
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0293",
+    "기대대기_s": 57.4,
+    "보행신호": "有",
+    "횡단거리_m": 29.3,
+    "차로수": 10.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0467306,
+     37.27412586
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0292",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 6.7,
+    "차로수": 1.0,
+    "주기_s": 180.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0462608,
+     37.27429512
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0291",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 13.0,
+    "차로수": 1.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0454534,
+     37.27457166
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0290",
+    "기대대기_s": 58.6,
+    "보행신호": "有",
+    "횡단거리_m": 27.8,
+    "차로수": 10.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0440243,
+     37.27435762
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0289",
+    "기대대기_s": 56.6,
+    "보행신호": "有",
+    "횡단거리_m": 30.3,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0427791,
+     37.27474164
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0288",
+    "기대대기_s": 57.6,
+    "보행신호": "有",
+    "횡단거리_m": 29.0,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0351369,
+     37.29599326
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0068",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 9.5,
+    "차로수": 2.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0360301,
+     37.29557358
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0067",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 7.3,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0400557,
+     37.2977359
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0066",
+    "기대대기_s": 50.9,
+    "보행신호": "有",
+    "횡단거리_m": 37.6,
+    "차로수": 12.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0492033,
+     37.29525573
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0065",
+    "기대대기_s": 45.0,
+    "보행신호": "有",
+    "횡단거리_m": 45.7,
+    "차로수": 15.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0492033,
+     37.29525573
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0064",
+    "기대대기_s": 44.3,
+    "보행신호": "有",
+    "횡단거리_m": 46.7,
+    "차로수": 15.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0378033,
+     37.29350278
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0074",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 18.7,
+    "차로수": 1.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0354186,
+     37.29376517
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0073",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 22.1,
+    "차로수": 2.0,
+    "주기_s": 180.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0360301,
+     37.29557358
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0072",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 19.9,
+    "차로수": 2.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0351369,
+     37.29599326
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0071",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 10.0,
+    "차로수": 2.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0351369,
+     37.29599326
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0070",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 23.1,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0351369,
+     37.29599326
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0069",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 8.4,
+    "차로수": 2.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0440533,
+     37.24465642
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0153",
+    "기대대기_s": 48.8,
+    "보행신호": "有",
+    "횡단거리_m": 40.5,
+    "차로수": 11.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.043749,
+     37.24471059
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0152",
+    "기대대기_s": 48.8,
+    "보행신호": "有",
+    "횡단거리_m": 40.5,
+    "차로수": 11.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0666307,
+     37.24604076
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0165",
+    "기대대기_s": 52.3,
+    "보행신호": "有",
+    "횡단거리_m": 35.8,
+    "차로수": 6.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0671599,
+     37.24814296
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0164",
+    "기대대기_s": 36.8,
+    "보행신호": "有",
+    "횡단거리_m": 44.5,
+    "차로수": 8.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0627669,
+     37.24539693
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0163",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 46.1,
+    "차로수": 10.0,
+    "주기_s": 180.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0617865,
+     37.24572066
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0162",
+    "기대대기_s": 44.7,
+    "보행신호": "有",
+    "횡단거리_m": 46.1,
+    "차로수": 13.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0602835,
+     37.24563884
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0161",
+    "기대대기_s": 49.1,
+    "보행신호": "有",
+    "횡단거리_m": 40.1,
+    "차로수": 12.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0583396,
+     37.24474817
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0160",
+    "기대대기_s": 51.5,
+    "보행신호": "有",
+    "횡단거리_m": 36.9,
+    "차로수": 13.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0566513,
+     37.24617508
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0159",
+    "기대대기_s": 49.7,
+    "보행신호": "有",
+    "횡단거리_m": 39.3,
+    "차로수": 12.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0532386,
+     37.24541381
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0158",
+    "기대대기_s": 54.2,
+    "보행신호": "有",
+    "횡단거리_m": 33.3,
+    "차로수": 11.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0508383,
+     37.245029
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0157",
+    "기대대기_s": 48.8,
+    "보행신호": "有",
+    "횡단거리_m": 40.5,
+    "차로수": 11.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0496437,
+     37.24510487
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0156",
+    "기대대기_s": 50.1,
+    "보행신호": "有",
+    "횡단거리_m": 38.7,
+    "차로수": 13.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0475586,
+     37.24498854
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0155",
+    "기대대기_s": 51.5,
+    "보행신호": "有",
+    "횡단거리_m": 36.8,
+    "차로수": 13.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0469237,
+     37.24493474
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0154",
+    "기대대기_s": 44.9,
+    "보행신호": "有",
+    "횡단거리_m": 45.8,
+    "차로수": 12.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0490344,
+     37.2595236
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0856",
+    "기대대기_s": 63.8,
+    "보행신호": "有",
+    "횡단거리_m": 21.4,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0465469,
+     37.25959894
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0855",
+    "기대대기_s": 61.8,
+    "보행신호": "有",
+    "횡단거리_m": 23.9,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0451632,
+     37.25905754
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0854",
+    "기대대기_s": 59.4,
+    "보행신호": "有",
+    "횡단거리_m": 26.8,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0433105,
+     37.25932976
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0853",
+    "기대대기_s": 54.1,
+    "보행신호": "有",
+    "횡단거리_m": 33.5,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0423453,
+     37.25881232
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0852",
+    "기대대기_s": 28.0,
+    "보행신호": "有",
+    "횡단거리_m": 33.0,
+    "차로수": 8.0,
+    "주기_s": 123.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0411142,
+     37.25913206
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0851",
+    "기대대기_s": 58.5,
+    "보행신호": "有",
+    "횡단거리_m": 27.9,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0392662,
+     37.26073838
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0850",
+    "기대대기_s": 62.3,
+    "보행신호": "有",
+    "횡단거리_m": 23.2,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0474816,
+     37.2779303
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0728",
+    "기대대기_s": 67.4,
+    "보행신호": "有",
+    "횡단거리_m": 17.2,
+    "차로수": 6.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0452825,
+     37.27867243
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0727",
+    "기대대기_s": 66.4,
+    "보행신호": "有",
+    "횡단거리_m": 18.4,
+    "차로수": 6.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0452825,
+     37.27867243
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0726",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 7.7,
+    "차로수": 1.0,
+    "주기_s": 180.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0441733,
+     37.27921793
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0725",
+    "기대대기_s": 57.4,
+    "보행신호": "有",
+    "횡단거리_m": 17.5,
+    "차로수": 7.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0435198,
+     37.27976074
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0724",
+    "기대대기_s": 56.5,
+    "보행신호": "有",
+    "횡단거리_m": 18.5,
+    "차로수": 7.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0639887,
+     37.27270031
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0740",
+    "기대대기_s": 65.6,
+    "보행신호": "有",
+    "횡단거리_m": 19.3,
+    "차로수": 5.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0623932,
+     37.27313016
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0739",
+    "기대대기_s": 68.3,
+    "보행신호": "有",
+    "횡단거리_m": 16.2,
+    "차로수": 4.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0623932,
+     37.27313016
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0738",
+    "기대대기_s": 68.3,
+    "보행신호": "有",
+    "횡단거리_m": 16.2,
+    "차로수": 5.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0605191,
+     37.27164157
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0737",
+    "기대대기_s": 60.8,
+    "보행신호": "有",
+    "횡단거리_m": 25.1,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0586126,
+     37.27243039
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0736",
+    "기대대기_s": 60.1,
+    "보행신호": "有",
+    "횡단거리_m": 25.9,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0574804,
+     37.27370984
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0735",
+    "기대대기_s": 65.2,
+    "보행신호": "有",
+    "횡단거리_m": 19.8,
+    "차로수": 6.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0561108,
+     37.27403267
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0734",
+    "기대대기_s": 65.2,
+    "보행신호": "有",
+    "횡단거리_m": 19.8,
+    "차로수": 6.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0541751,
+     37.27411808
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0733",
+    "기대대기_s": 63.8,
+    "보행신호": "有",
+    "횡단거리_m": 21.4,
+    "차로수": 6.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0530874,
+     37.27550783
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0732",
+    "기대대기_s": 64.4,
+    "보행신호": "有",
+    "횡단거리_m": 20.7,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.050972,
+     37.27597185
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0731",
+    "기대대기_s": 63.8,
+    "보행신호": "有",
+    "횡단거리_m": 21.5,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0493395,
+     37.2773538
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0730",
+    "기대대기_s": 51.3,
+    "보행신호": "有",
+    "횡단거리_m": 24.9,
+    "차로수": 6.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.048517,
+     37.27720637
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0729",
+    "기대대기_s": 53.9,
+    "보행신호": "有",
+    "횡단거리_m": 21.7,
+    "차로수": 7.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0363797,
+     37.25512945
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1202",
+    "기대대기_s": 61.2,
+    "보행신호": "有",
+    "횡단거리_m": 24.6,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0368805,
+     37.2562221
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1201",
+    "기대대기_s": 60.5,
+    "보행신호": "有",
+    "횡단거리_m": 25.4,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0390589,
+     37.2559916
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1200",
+    "기대대기_s": 59.3,
+    "보행신호": "有",
+    "횡단거리_m": 26.9,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0390589,
+     37.2559916
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1199",
+    "기대대기_s": 62.1,
+    "보행신호": "有",
+    "횡단거리_m": 23.5,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0390512,
+     37.25941827
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1198",
+    "기대대기_s": 61.7,
+    "보행신호": "有",
+    "횡단거리_m": 24.0,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0392662,
+     37.26073838
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1197",
+    "기대대기_s": 53.8,
+    "보행신호": "有",
+    "횡단거리_m": 33.8,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0395242,
+     37.26153322
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1196",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 36.1,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0413586,
+     37.26558864
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1194",
+    "기대대기_s": 60.4,
+    "보행신호": "有",
+    "횡단거리_m": 25.6,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0425746,
+     37.26731163
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1193",
+    "기대대기_s": 62.5,
+    "보행신호": "有",
+    "횡단거리_m": 23.0,
+    "차로수": 6.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.042781,
+     37.26881949
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1192",
+    "기대대기_s": 62.4,
+    "보행신호": "有",
+    "횡단거리_m": 23.1,
+    "차로수": 6.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0434332,
+     37.2701205
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1191",
+    "기대대기_s": 61.8,
+    "보행신호": "有",
+    "횡단거리_m": 23.8,
+    "차로수": 6.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0445027,
+     37.27222436
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1190",
+    "기대대기_s": 60.2,
+    "보행신호": "有",
+    "횡단거리_m": 25.8,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.046556,
+     37.27315169
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1189",
+    "기대대기_s": 59.0,
+    "보행신호": "有",
+    "횡단거리_m": 27.2,
+    "차로수": 4.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0470278,
+     37.273478
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1188",
+    "기대대기_s": 50.9,
+    "보행신호": "有",
+    "횡단거리_m": 37.7,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0484355,
+     37.27385295
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1187",
+    "기대대기_s": 64.8,
+    "보행신호": "有",
+    "횡단거리_m": 20.3,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0495512,
+     37.27399157
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1186",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 12.4,
+    "차로수": 1.0,
+    "주기_s": 180.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0503007,
+     37.2750589
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1185",
+    "기대대기_s": 62.7,
+    "보행신호": "有",
+    "횡단거리_m": 22.8,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0511024,
+     37.27491772
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1184",
+    "기대대기_s": 59.9,
+    "보행신호": "有",
+    "횡단거리_m": 26.2,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.050972,
+     37.27597185
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1183",
+    "기대대기_s": 54.8,
+    "보행신호": "有",
+    "횡단거리_m": 32.6,
+    "차로수": 11.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0516686,
+     37.30567121
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0950",
+    "기대대기_s": 55.7,
+    "보행신호": "有",
+    "횡단거리_m": 19.5,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0505009,
+     37.26427327
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1248",
+    "기대대기_s": 60.0,
+    "보행신호": "有",
+    "횡단거리_m": 14.4,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0499143,
+     37.263522
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1247",
+    "기대대기_s": 58.1,
+    "보행신호": "有",
+    "횡단거리_m": 16.6,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0485535,
+     37.26352341
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1246",
+    "기대대기_s": 61.0,
+    "보행신호": "有",
+    "횡단거리_m": 13.3,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0470531,
+     37.26360359
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1245",
+    "기대대기_s": 60.6,
+    "보행신호": "有",
+    "횡단거리_m": 13.7,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0460785,
+     37.26413592
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1244",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 5.2,
+    "차로수": 1.0,
+    "주기_s": 165.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0452101,
+     37.26437596
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1243",
+    "기대대기_s": 61.7,
+    "보행신호": "有",
+    "횡단거리_m": 15.3,
+    "차로수": 4.0,
+    "주기_s": 165.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0441067,
+     37.26429582
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1242",
+    "기대대기_s": 61.7,
+    "보행신호": "有",
+    "횡단거리_m": 15.3,
+    "차로수": 4.0,
+    "주기_s": 165.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0441067,
+     37.26429582
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1241",
+    "기대대기_s": 63.8,
+    "보행신호": "有",
+    "횡단거리_m": 12.9,
+    "차로수": 4.0,
+    "주기_s": 165.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0441067,
+     37.26429582
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1240",
+    "기대대기_s": 64.0,
+    "보행신호": "有",
+    "횡단거리_m": 12.7,
+    "차로수": 4.0,
+    "주기_s": 165.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0413586,
+     37.26558864
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1239",
+    "기대대기_s": 67.6,
+    "보행신호": "有",
+    "횡단거리_m": 17.0,
+    "차로수": 6.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0406383,
+     37.26507041
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1238",
+    "기대대기_s": 53.8,
+    "보행신호": "有",
+    "횡단거리_m": 21.8,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0491395,
+     37.30533857
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0949",
+    "기대대기_s": 58.8,
+    "보행신호": "有",
+    "횡단거리_m": 15.8,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0491395,
+     37.30533857
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0948",
+    "기대대기_s": 58.9,
+    "보행신호": "有",
+    "횡단거리_m": 15.7,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0466338,
+     37.3053398
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0947",
+    "기대대기_s": 58.3,
+    "보행신호": "有",
+    "횡단거리_m": 16.4,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0466338,
+     37.3053398
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0946",
+    "기대대기_s": 57.4,
+    "보행신호": "有",
+    "횡단거리_m": 17.5,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0405952,
+     37.30687302
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0945",
+    "기대대기_s": 57.2,
+    "보행신호": "有",
+    "횡단거리_m": 17.7,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0405952,
+     37.30687302
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0944",
+    "기대대기_s": 58.7,
+    "보행신호": "有",
+    "횡단거리_m": 15.9,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0405952,
+     37.30687302
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0943",
+    "기대대기_s": 58.7,
+    "보행신호": "有",
+    "횡단거리_m": 16.0,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0405952,
+     37.30687302
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0942",
+    "기대대기_s": 58.8,
+    "보행신호": "有",
+    "횡단거리_m": 15.8,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0405952,
+     37.30687302
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0941",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 12.5,
+    "차로수": 3.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0405952,
+     37.30687302
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0940",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 12.0,
+    "차로수": 3.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0340318,
+     37.26733547
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0975",
+    "기대대기_s": 61.8,
+    "보행신호": "有",
+    "횡단거리_m": 23.9,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0451287,
+     37.29087879
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0958",
+    "기대대기_s": 42.1,
+    "보행신호": "有",
+    "횡단거리_m": 36.9,
+    "차로수": 11.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0451287,
+     37.29087879
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0957",
+    "기대대기_s": 40.3,
+    "보행신호": "有",
+    "횡단거리_m": 39.5,
+    "차로수": 12.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0492033,
+     37.29525573
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0956",
+    "기대대기_s": 60.1,
+    "보행신호": "有",
+    "횡단거리_m": 25.9,
+    "차로수": 11.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.049337,
+     37.29637078
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0955",
+    "기대대기_s": 50.7,
+    "보행신호": "有",
+    "횡단거리_m": 25.6,
+    "차로수": 7.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.049337,
+     37.29637078
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0954",
+    "기대대기_s": 50.5,
+    "보행신호": "有",
+    "횡단거리_m": 25.9,
+    "차로수": 10.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.050306,
+     37.29712223
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0953",
+    "기대대기_s": 53.7,
+    "보행신호": "有",
+    "횡단거리_m": 21.9,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0514608,
+     37.30348175
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0952",
+    "기대대기_s": 62.0,
+    "보행신호": "有",
+    "횡단거리_m": 23.6,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0516686,
+     37.30567121
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0951",
+    "기대대기_s": 52.5,
+    "보행신호": "有",
+    "횡단거리_m": 23.4,
+    "차로수": 7.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0432002,
+     37.29886449
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1002",
+    "기대대기_s": 56.3,
+    "보행신호": "有",
+    "횡단거리_m": 18.8,
+    "차로수": 6.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0436235,
+     37.29928078
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1001",
+    "기대대기_s": 58.7,
+    "보행신호": "有",
+    "횡단거리_m": 15.9,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0443078,
+     37.29993241
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1000",
+    "기대대기_s": 61.6,
+    "보행신호": "有",
+    "횡단거리_m": 12.6,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0448058,
+     37.30105524
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0999",
+    "기대대기_s": 58.2,
+    "보행신호": "有",
+    "횡단거리_m": 16.5,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0448058,
+     37.30105524
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0998",
+    "기대대기_s": 59.0,
+    "보행신호": "有",
+    "횡단거리_m": 15.6,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0474266,
+     37.30294601
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0997",
+    "기대대기_s": 61.8,
+    "보행신호": "有",
+    "횡단거리_m": 12.4,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0471132,
+     37.30394528
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0996",
+    "기대대기_s": 62.2,
+    "보행신호": "有",
+    "횡단거리_m": 17.6,
+    "차로수": 5.0,
+    "주기_s": 170.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0471585,
+     37.30436918
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0995",
+    "기대대기_s": 66.5,
+    "보행신호": "有",
+    "횡단거리_m": 12.6,
+    "차로수": 4.0,
+    "주기_s": 170.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0471542,
+     37.30508126
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-0994",
+    "기대대기_s": 55.1,
+    "보행신호": "有",
+    "횡단거리_m": 20.2,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0477085,
+     37.24640296
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1025",
+    "기대대기_s": 60.3,
+    "보행신호": "有",
+    "횡단거리_m": 25.7,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0477085,
+     37.24640296
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1024",
+    "기대대기_s": 59.0,
+    "보행신호": "有",
+    "횡단거리_m": 27.2,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0485916,
+     37.2475741
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1023",
+    "기대대기_s": 61.8,
+    "보행신호": "有",
+    "횡단거리_m": 23.9,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0489129,
+     37.24806851
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1022",
+    "기대대기_s": 59.0,
+    "보행신호": "有",
+    "횡단거리_m": 27.2,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0497358,
+     37.24909021
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1021",
+    "기대대기_s": 60.0,
+    "보행신호": "有",
+    "횡단거리_m": 26.0,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0574549,
+     37.25467174
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1020",
+    "기대대기_s": 40.1,
+    "보행신호": "有",
+    "횡단거리_m": 23.9,
+    "차로수": 7.0,
+    "주기_s": 135.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0574549,
+     37.25467174
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1019",
+    "기대대기_s": 35.6,
+    "보행신호": "有",
+    "횡단거리_m": 29.9,
+    "차로수": 8.0,
+    "주기_s": 135.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0574549,
+     37.25467174
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1018",
+    "기대대기_s": 36.0,
+    "보행신호": "有",
+    "횡단거리_m": 29.4,
+    "차로수": 8.0,
+    "주기_s": 135.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0544968,
+     37.25504123
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1017",
+    "기대대기_s": 61.5,
+    "보행신호": "有",
+    "횡단거리_m": 24.2,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0544968,
+     37.25504123
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1016",
+    "기대대기_s": 62.2,
+    "보행신호": "有",
+    "횡단거리_m": 23.4,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0566678,
+     37.25728079
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1015",
+    "기대대기_s": 58.2,
+    "보행신호": "有",
+    "횡단거리_m": 28.3,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0572687,
+     37.25819302
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1014",
+    "기대대기_s": 61.9,
+    "보행신호": "有",
+    "횡단거리_m": 23.7,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0596522,
+     37.26141105
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1013",
+    "기대대기_s": 61.8,
+    "보행신호": "有",
+    "횡단거리_m": 23.8,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0598563,
+     37.26193165
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1012",
+    "기대대기_s": 59.9,
+    "보행신호": "有",
+    "횡단거리_m": 26.2,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0613009,
+     37.2640754
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1011",
+    "기대대기_s": 57.3,
+    "보행신호": "有",
+    "횡단거리_m": 29.4,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0617523,
+     37.26476693
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1010",
+    "기대대기_s": 59.0,
+    "보행신호": "有",
+    "횡단거리_m": 27.3,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0627112,
+     37.26573083
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1009",
+    "기대대기_s": 58.4,
+    "보행신호": "有",
+    "횡단거리_m": 28.0,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0633627,
+     37.26571428
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1008",
+    "기대대기_s": 58.2,
+    "보행신호": "有",
+    "횡단거리_m": 28.2,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0655305,
+     37.26663121
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1007",
+    "기대대기_s": 58.3,
+    "보행신호": "有",
+    "횡단거리_m": 28.1,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0655532,
+     37.26682168
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1006",
+    "기대대기_s": 59.2,
+    "보행신호": "有",
+    "횡단거리_m": 27.0,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0671092,
+     37.26716944
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1005",
+    "기대대기_s": 59.0,
+    "보행신호": "有",
+    "횡단거리_m": 27.2,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0400557,
+     37.2977359
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1004",
+    "기대대기_s": 58.6,
+    "보행신호": "有",
+    "횡단거리_m": 27.7,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0418939,
+     37.29748792
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1003",
+    "기대대기_s": 63.4,
+    "보행신호": "有",
+    "횡단거리_m": 21.9,
+    "차로수": 6.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0462464,
+     37.25239088
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1158",
+    "기대대기_s": 61.8,
+    "보행신호": "有",
+    "횡단거리_m": 23.9,
+    "차로수": 6.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0416448,
+     37.25161304
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1157",
+    "기대대기_s": 54.2,
+    "보행신호": "有",
+    "횡단거리_m": 33.3,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0416448,
+     37.25161304
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1156",
+    "기대대기_s": 47.9,
+    "보행신호": "有",
+    "횡단거리_m": 41.7,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0395271,
+     37.25419297
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1155",
+    "기대대기_s": 58.1,
+    "보행신호": "有",
+    "횡단거리_m": 28.4,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0392142,
+     37.25447348
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1154",
+    "기대대기_s": 58.2,
+    "보행신호": "有",
+    "횡단거리_m": 28.2,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0384063,
+     37.25566017
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1153",
+    "기대대기_s": 61.4,
+    "보행신호": "有",
+    "횡단거리_m": 24.3,
+    "차로수": 6.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0368805,
+     37.2562221
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1152",
+    "기대대기_s": 60.8,
+    "보행신호": "有",
+    "횡단거리_m": 25.1,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0501785,
+     37.24594703
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1164",
+    "기대대기_s": 58.8,
+    "보행신호": "有",
+    "횡단거리_m": 27.5,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0477742,
+     37.2475673
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1163",
+    "기대대기_s": 54.4,
+    "보행신호": "有",
+    "횡단거리_m": 33.1,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0477742,
+     37.2475673
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1162",
+    "기대대기_s": 58.9,
+    "보행신호": "有",
+    "횡단거리_m": 27.4,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0486084,
+     37.24791343
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1161",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 7.6,
+    "차로수": 1.0,
+    "주기_s": 180.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0462761,
+     37.24851076
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1160",
+    "기대대기_s": 59.0,
+    "보행신호": "有",
+    "횡단거리_m": 27.2,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0459226,
+     37.24902792
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1159",
+    "기대대기_s": 58.6,
+    "보행신호": "有",
+    "횡단거리_m": 27.8,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0441088,
+     37.27548906
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1357",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 9.1,
+    "차로수": 2.0,
+    "주기_s": 80.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0441552,
+     37.27661283
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1356",
+    "기대대기_s": 21.4,
+    "보행신호": "有",
+    "횡단거리_m": 14.5,
+    "차로수": 4.0,
+    "주기_s": 80.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0437256,
+     37.27864482
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1355",
+    "기대대기_s": 26.8,
+    "보행신호": "有",
+    "횡단거리_m": 13.5,
+    "차로수": 4.0,
+    "주기_s": 90.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0438265,
+     37.27940022
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1354",
+    "기대대기_s": 59.3,
+    "보행신호": "有",
+    "횡단거리_m": 15.2,
+    "차로수": 6.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0671629,
+     37.27763302
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1886",
+    "기대대기_s": 60.0,
+    "보행신호": "有",
+    "횡단거리_m": 26.0,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0723182,
+     37.28110772
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1885",
+    "기대대기_s": 56.7,
+    "보행신호": "有",
+    "횡단거리_m": 30.1,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0801591,
+     37.29502314
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1884",
+    "기대대기_s": 50.9,
+    "보행신호": "有",
+    "횡단거리_m": 25.4,
+    "차로수": 7.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0594465,
+     37.27189118
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1883",
+    "기대대기_s": 56.0,
+    "보행신호": "有",
+    "횡단거리_m": 19.1,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0605191,
+     37.27164157
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1882",
+    "기대대기_s": 55.8,
+    "보행신호": "有",
+    "횡단거리_m": 19.4,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0612627,
+     37.27308767
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1881",
+    "기대대기_s": 66.8,
+    "보행신호": "有",
+    "횡단거리_m": 17.9,
+    "차로수": 5.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0612627,
+     37.27308767
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1880",
+    "기대대기_s": 71.8,
+    "보행신호": "有",
+    "횡단거리_m": 12.2,
+    "차로수": 4.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0658507,
+     37.28091452
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1879",
+    "기대대기_s": 60.8,
+    "보행신호": "有",
+    "횡단거리_m": 13.5,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0601989,
+     37.27661056
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1878",
+    "기대대기_s": 71.1,
+    "보행신호": "有",
+    "횡단거리_m": 13.0,
+    "차로수": 4.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0589671,
+     37.27906245
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1877",
+    "기대대기_s": 61.3,
+    "보행신호": "有",
+    "횡단거리_m": 12.9,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0588354,
+     37.2796927
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1876",
+    "기대대기_s": 61.3,
+    "보행신호": "有",
+    "횡단거리_m": 12.9,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0583843,
+     37.28394889
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1875",
+    "기대대기_s": 58.5,
+    "보행신호": "有",
+    "횡단거리_m": 16.2,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0567083,
+     37.28504479
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1874",
+    "기대대기_s": 45.0,
+    "보행신호": "有",
+    "횡단거리_m": 33.0,
+    "차로수": 7.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.050972,
+     37.27597185
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1873",
+    "기대대기_s": 54.8,
+    "보행신호": "有",
+    "횡단거리_m": 32.5,
+    "차로수": 11.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0514094,
+     37.27830307
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1872",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 50.0,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.056778,
+     37.28394176
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1871",
+    "기대대기_s": 41.7,
+    "보행신호": "有",
+    "횡단거리_m": 37.5,
+    "차로수": 11.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0567083,
+     37.28504479
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1870",
+    "기대대기_s": 46.4,
+    "보행신호": "有",
+    "횡단거리_m": 31.1,
+    "차로수": 9.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0594469,
+     37.28582866
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1869",
+    "기대대기_s": 55.3,
+    "보행신호": "有",
+    "횡단거리_m": 31.9,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0597978,
+     37.28708984
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1868",
+    "기대대기_s": 43.7,
+    "보행신호": "有",
+    "횡단거리_m": 34.8,
+    "차로수": 9.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0627644,
+     37.28892477
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1867",
+    "기대대기_s": 40.5,
+    "보행신호": "有",
+    "횡단거리_m": 39.2,
+    "차로수": 8.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0624334,
+     37.29029933
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1866",
+    "기대대기_s": 52.5,
+    "보행신호": "有",
+    "횡단거리_m": 35.5,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0668633,
+     37.29206684
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1865",
+    "기대대기_s": 46.0,
+    "보행신호": "有",
+    "횡단거리_m": 31.7,
+    "차로수": 9.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0674909,
+     37.29232158
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1864",
+    "기대대기_s": 47.3,
+    "보행신호": "有",
+    "횡단거리_m": 30.0,
+    "차로수": 9.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0686139,
+     37.29371377
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1863",
+    "기대대기_s": 50.4,
+    "보행신호": "有",
+    "횡단거리_m": 26.0,
+    "차로수": 7.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0813315,
+     37.29533687
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1862",
+    "기대대기_s": 61.1,
+    "보행신호": "有",
+    "횡단거리_m": 13.2,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0434332,
+     37.2701205
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1913",
+    "기대대기_s": 62.5,
+    "보행신호": "有",
+    "횡단거리_m": 11.6,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0452318,
+     37.27201987
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1912",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 8.8,
+    "차로수": 1.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0520945,
+     37.26815203
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1911",
+    "기대대기_s": 56.5,
+    "보행신호": "有",
+    "횡단거리_m": 12.8,
+    "차로수": 4.0,
+    "주기_s": 150.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0517095,
+     37.26939399
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1910",
+    "기대대기_s": 38.8,
+    "보행신호": "有",
+    "횡단거리_m": 16.5,
+    "차로수": 5.0,
+    "주기_s": 120.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0517095,
+     37.26939399
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1909",
+    "기대대기_s": 39.0,
+    "보행신호": "有",
+    "횡단거리_m": 16.3,
+    "차로수": 5.0,
+    "주기_s": 120.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.052559,
+     37.27084893
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1908",
+    "기대대기_s": 39.0,
+    "보행신호": "有",
+    "횡단거리_m": 16.3,
+    "차로수": 5.0,
+    "주기_s": 120.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0526703,
+     37.27109273
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1907",
+    "기대대기_s": 40.4,
+    "보행신호": "有",
+    "횡단거리_m": 14.5,
+    "차로수": 4.0,
+    "주기_s": 120.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.052992,
+     37.27201337
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1906",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 12.9,
+    "차로수": 4.0,
+    "주기_s": 120.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0530545,
+     37.27286001
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1905",
+    "기대대기_s": 37.2,
+    "보행신호": "有",
+    "횡단거리_m": 18.5,
+    "차로수": 4.0,
+    "주기_s": 120.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0458394,
+     37.23435698
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1904",
+    "기대대기_s": 61.1,
+    "보행신호": "有",
+    "횡단거리_m": 24.7,
+    "차로수": 6.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0458394,
+     37.23435698
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1903",
+    "기대대기_s": 61.1,
+    "보행신호": "有",
+    "횡단거리_m": 24.7,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0476776,
+     37.23686332
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1902",
+    "기대대기_s": 61.3,
+    "보행신호": "有",
+    "횡단거리_m": 24.4,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0454589,
+     37.23870503
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1901",
+    "기대대기_s": 58.5,
+    "보행신호": "有",
+    "횡단거리_m": 27.9,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0463958,
+     37.24149191
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1900",
+    "기대대기_s": 61.5,
+    "보행신호": "有",
+    "횡단거리_m": 24.2,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0463958,
+     37.24149191
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1899",
+    "기대대기_s": 61.5,
+    "보행신호": "有",
+    "횡단거리_m": 24.2,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0472486,
+     37.24506017
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1898",
+    "기대대기_s": 54.8,
+    "보행신호": "有",
+    "횡단거리_m": 32.5,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0559743,
+     37.28661418
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1897",
+    "기대대기_s": 44.7,
+    "보행신호": "有",
+    "횡단거리_m": 33.4,
+    "차로수": 10.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0559743,
+     37.28661418
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1896",
+    "기대대기_s": 42.6,
+    "보행신호": "有",
+    "횡단거리_m": 36.3,
+    "차로수": 10.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0539802,
+     37.2861239
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1895",
+    "기대대기_s": 41.5,
+    "보행신호": "有",
+    "횡단거리_m": 37.8,
+    "차로수": 9.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0507198,
+     37.2892098
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1894",
+    "기대대기_s": 42.5,
+    "보행신호": "有",
+    "횡단거리_m": 36.4,
+    "차로수": 7.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0503927,
+     37.28920993
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1893",
+    "기대대기_s": 43.7,
+    "보행신호": "有",
+    "횡단거리_m": 34.8,
+    "차로수": 8.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0490852,
+     37.29029168
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1892",
+    "기대대기_s": 46.2,
+    "보행신호": "有",
+    "횡단거리_m": 31.4,
+    "차로수": 9.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0477287,
+     37.29090564
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1891",
+    "기대대기_s": 46.1,
+    "보행신호": "有",
+    "횡단거리_m": 31.5,
+    "차로수": 9.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0468304,
+     37.2914607
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1890",
+    "기대대기_s": 52.5,
+    "보행신호": "有",
+    "횡단거리_m": 23.4,
+    "차로수": 7.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.061017,
+     37.27069616
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1889",
+    "기대대기_s": 56.8,
+    "보행신호": "有",
+    "횡단거리_m": 30.0,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.061017,
+     37.27069616
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1888",
+    "기대대기_s": 60.8,
+    "보행신호": "有",
+    "횡단거리_m": 25.0,
+    "차로수": 6.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0671629,
+     37.27763302
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1887",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 56.4,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0680566,
+     37.25437679
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1940",
+    "기대대기_s": 57.2,
+    "보행신호": "有",
+    "횡단거리_m": 17.7,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0680566,
+     37.25437679
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1939",
+    "기대대기_s": 58.0,
+    "보행신호": "有",
+    "횡단거리_m": 16.8,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0676652,
+     37.25640386
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1938",
+    "기대대기_s": 27.2,
+    "보행신호": "有",
+    "횡단거리_m": 19.3,
+    "차로수": 7.0,
+    "주기_s": 100.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0654263,
+     37.25745706
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1937",
+    "기대대기_s": 37.4,
+    "보행신호": "有",
+    "횡단거리_m": 20.7,
+    "차로수": 8.0,
+    "주기_s": 124.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0651238,
+     37.25907846
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1936",
+    "기대대기_s": 54.8,
+    "보행신호": "有",
+    "횡단거리_m": 20.6,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0642856,
+     37.25972438
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1935",
+    "기대대기_s": 27.1,
+    "보행신호": "有",
+    "횡단거리_m": 13.2,
+    "차로수": 4.0,
+    "주기_s": 90.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0642323,
+     37.26114839
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1934",
+    "기대대기_s": 27.5,
+    "보행신호": "有",
+    "횡단거리_m": 12.6,
+    "차로수": 4.0,
+    "주기_s": 90.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0635554,
+     37.26160926
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1933",
+    "기대대기_s": 22.8,
+    "보행신호": "有",
+    "횡단거리_m": 12.6,
+    "차로수": 4.0,
+    "주기_s": 80.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0640824,
+     37.26359425
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1932",
+    "기대대기_s": 61.7,
+    "보행신호": "有",
+    "횡단거리_m": 12.5,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0643045,
+     37.2642765
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1931",
+    "기대대기_s": 62.3,
+    "보행신호": "有",
+    "횡단거리_m": 11.8,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0615039,
+     37.26428919
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1930",
+    "기대대기_s": 66.5,
+    "보행신호": "有",
+    "횡단거리_m": 18.3,
+    "차로수": 4.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0611904,
+     37.26450838
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1929",
+    "기대대기_s": 70.7,
+    "보행신호": "有",
+    "횡단거리_m": 13.5,
+    "차로수": 4.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0594079,
+     37.26653891
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1928",
+    "기대대기_s": 70.3,
+    "보행신호": "有",
+    "횡단거리_m": 13.9,
+    "차로수": 5.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0581776,
+     37.26670559
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1927",
+    "기대대기_s": 67.5,
+    "보행신호": "有",
+    "횡단거리_m": 17.1,
+    "차로수": 5.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0571077,
+     37.26643118
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1926",
+    "기대대기_s": 55.3,
+    "보행신호": "有",
+    "횡단거리_m": 20.0,
+    "차로수": 6.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0556662,
+     37.2670154
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1925",
+    "기대대기_s": 61.3,
+    "보행신호": "有",
+    "횡단거리_m": 24.4,
+    "차로수": 4.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0547578,
+     37.26716417
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1924",
+    "기대대기_s": 71.6,
+    "보행신호": "有",
+    "횡단거리_m": 12.5,
+    "차로수": 5.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0541164,
+     37.26730671
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1923",
+    "기대대기_s": 61.2,
+    "보행신호": "有",
+    "횡단거리_m": 13.1,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0520945,
+     37.26815203
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1922",
+    "기대대기_s": 54.4,
+    "보행신호": "有",
+    "횡단거리_m": 15.2,
+    "차로수": 4.0,
+    "주기_s": 150.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0513148,
+     37.26914047
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1921",
+    "기대대기_s": 38.5,
+    "보행신호": "有",
+    "횡단거리_m": 16.9,
+    "차로수": 4.0,
+    "주기_s": 120.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.049874,
+     37.26869071
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1920",
+    "기대대기_s": 62.4,
+    "보행신호": "有",
+    "횡단거리_m": 11.7,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0491647,
+     37.26884397
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1919",
+    "기대대기_s": 60.5,
+    "보행신호": "有",
+    "횡단거리_m": 13.9,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0474361,
+     37.26932413
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1918",
+    "기대대기_s": 62.2,
+    "보행신호": "有",
+    "횡단거리_m": 11.9,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0471085,
+     37.26942203
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1917",
+    "기대대기_s": 61.3,
+    "보행신호": "有",
+    "횡단거리_m": 12.9,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0452217,
+     37.26995564
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1916",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 13.2,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0434332,
+     37.2701205
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1915",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 12.6,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0434332,
+     37.2701205
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1914",
+    "기대대기_s": 62.1,
+    "보행신호": "有",
+    "횡단거리_m": 12.0,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0795352,
+     37.2511261
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1966",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 12.9,
+    "차로수": 4.0,
+    "주기_s": 120.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0793141,
+     37.25033209
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1965",
+    "기대대기_s": 42.0,
+    "보행신호": "有",
+    "횡단거리_m": 12.6,
+    "차로수": 4.0,
+    "주기_s": 120.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0781567,
+     37.24961587
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1964",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 12.3,
+    "차로수": 4.0,
+    "주기_s": 120.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0779199,
+     37.24961502
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1963",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 12.7,
+    "차로수": 4.0,
+    "주기_s": 120.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0771066,
+     37.24987353
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1962",
+    "기대대기_s": 39.9,
+    "보행신호": "有",
+    "횡단거리_m": 15.1,
+    "차로수": 4.0,
+    "주기_s": 120.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0768012,
+     37.25005271
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1961",
+    "기대대기_s": 39.3,
+    "보행신호": "有",
+    "횡단거리_m": 15.9,
+    "차로수": 5.0,
+    "주기_s": 120.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0760543,
+     37.25052778
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1960",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 12.4,
+    "차로수": 4.0,
+    "주기_s": 145.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0757601,
+     37.25070701
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1959",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 13.3,
+    "차로수": 4.0,
+    "주기_s": 145.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0750558,
+     37.25163292
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1958",
+    "기대대기_s": 52.2,
+    "보행신호": "有",
+    "횡단거리_m": 15.0,
+    "차로수": 3.0,
+    "주기_s": 145.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0744672,
+     37.25203644
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1957",
+    "기대대기_s": 48.7,
+    "보행신호": "有",
+    "횡단거리_m": 10.5,
+    "차로수": 3.0,
+    "주기_s": 130.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0740258,
+     37.25231429
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1956",
+    "기대대기_s": 46.9,
+    "보행신호": "有",
+    "횡단거리_m": 12.6,
+    "차로수": 3.0,
+    "주기_s": 130.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0734481,
+     37.25278995
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1955",
+    "기대대기_s": 46.7,
+    "보행신호": "有",
+    "횡단거리_m": 18.6,
+    "차로수": 5.0,
+    "주기_s": 140.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0734481,
+     37.25278995
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1954",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 19.8,
+    "차로수": 5.0,
+    "주기_s": 140.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0464122,
+     37.26703067
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1953",
+    "기대대기_s": 16.7,
+    "보행신호": "有",
+    "횡단거리_m": 8.3,
+    "차로수": 1.0,
+    "주기_s": 60.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0790179,
+     37.24886176
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1952",
+    "기대대기_s": 22.6,
+    "보행신호": "有",
+    "횡단거리_m": 19.2,
+    "차로수": 5.0,
+    "주기_s": 90.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0779016,
+     37.24885778
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1951",
+    "기대대기_s": 68.6,
+    "보행신호": "有",
+    "횡단거리_m": 15.8,
+    "차로수": 5.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0767853,
+     37.24886281
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1950",
+    "기대대기_s": 39.4,
+    "보행신호": "有",
+    "횡단거리_m": 15.7,
+    "차로수": 5.0,
+    "주기_s": 120.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0761763,
+     37.24886965
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1949",
+    "기대대기_s": 63.6,
+    "보행신호": "有",
+    "횡단거리_m": 21.7,
+    "차로수": 5.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0754789,
+     37.2485787
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1948",
+    "기대대기_s": 68.8,
+    "보행신호": "有",
+    "횡단거리_m": 15.6,
+    "차로수": 5.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0746639,
+     37.24913464
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1947",
+    "기대대기_s": 68.8,
+    "보행신호": "有",
+    "횡단거리_m": 15.6,
+    "차로수": 5.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0746842,
+     37.24954035
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1946",
+    "기대대기_s": 68.2,
+    "보행신호": "有",
+    "횡단거리_m": 16.3,
+    "차로수": 5.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0735299,
+     37.25026633
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1945",
+    "기대대기_s": 39.1,
+    "보행신호": "有",
+    "횡단거리_m": 16.1,
+    "차로수": 4.0,
+    "주기_s": 120.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0729748,
+     37.25072404
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1944",
+    "기대대기_s": 39.4,
+    "보행신호": "有",
+    "횡단거리_m": 15.8,
+    "차로수": 5.0,
+    "주기_s": 120.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0726078,
+     37.25181341
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1943",
+    "기대대기_s": 39.7,
+    "보행신호": "有",
+    "횡단거리_m": 15.4,
+    "차로수": 7.0,
+    "주기_s": 120.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.071039,
+     37.25206914
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1942",
+    "기대대기_s": 69.2,
+    "보행신호": "有",
+    "횡단거리_m": 15.2,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0696256,
+     37.25274907
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1941",
+    "기대대기_s": 59.2,
+    "보행신호": "有",
+    "횡단거리_m": 15.4,
+    "차로수": 5.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0828563,
+     37.26437036
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1994",
+    "기대대기_s": 45.7,
+    "보행신호": "有",
+    "횡단거리_m": 44.8,
+    "차로수": 13.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0830468,
+     37.26664255
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1993",
+    "기대대기_s": 46.1,
+    "보행신호": "有",
+    "횡단거리_m": 44.2,
+    "차로수": 13.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0817422,
+     37.26648583
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1992",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 58.4,
+    "차로수": 11.0,
+    "주기_s": 180.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0717668,
+     37.29281481
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1990",
+    "기대대기_s": 53.6,
+    "보행신호": "有",
+    "횡단거리_m": 22.0,
+    "차로수": 7.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0711939,
+     37.29236204
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1989",
+    "기대대기_s": 54.3,
+    "보행신호": "有",
+    "횡단거리_m": 21.2,
+    "차로수": 7.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0707259,
+     37.29133276
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1988",
+    "기대대기_s": 54.0,
+    "보행신호": "有",
+    "횡단거리_m": 21.5,
+    "차로수": 7.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0707259,
+     37.29133276
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1987",
+    "기대대기_s": 53.9,
+    "보행신호": "有",
+    "횡단거리_m": 21.7,
+    "차로수": 7.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0707761,
+     37.29044056
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1986",
+    "기대대기_s": 53.1,
+    "보행신호": "有",
+    "횡단거리_m": 22.6,
+    "차로수": 7.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0693374,
+     37.29049301
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1985",
+    "기대대기_s": 53.2,
+    "보행신호": "有",
+    "횡단거리_m": 22.5,
+    "차로수": 7.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0624654,
+     37.2897431
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1984",
+    "기대대기_s": 51.5,
+    "보행신호": "有",
+    "횡단거리_m": 24.6,
+    "차로수": 8.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0624271,
+     37.28856214
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1983",
+    "기대대기_s": 47.8,
+    "보행신호": "有",
+    "횡단거리_m": 29.3,
+    "차로수": 8.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0624271,
+     37.28856214
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1982",
+    "기대대기_s": 53.5,
+    "보행신호": "有",
+    "횡단거리_m": 22.1,
+    "차로수": 7.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0596382,
+     37.28682071
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1981",
+    "기대대기_s": 57.2,
+    "보행신호": "有",
+    "횡단거리_m": 17.7,
+    "차로수": 6.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0596382,
+     37.28682071
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1980",
+    "기대대기_s": 55.7,
+    "보행신호": "有",
+    "횡단거리_m": 19.5,
+    "차로수": 6.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0596382,
+     37.28682071
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1979",
+    "기대대기_s": 48.0,
+    "보행신호": "有",
+    "횡단거리_m": 29.1,
+    "차로수": 8.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0445785,
+     37.23777432
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1977",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 7.1,
+    "차로수": 2.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0744907,
+     37.25386636
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1976",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 18.8,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0744907,
+     37.25386636
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1975",
+    "기대대기_s": 61.1,
+    "보행신호": "有",
+    "횡단거리_m": 13.2,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0752142,
+     37.25354446
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1974",
+    "기대대기_s": 59.7,
+    "보행신호": "有",
+    "횡단거리_m": 14.8,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.075711,
+     37.25322162
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1973",
+    "기대대기_s": 47.0,
+    "보행신호": "有",
+    "횡단거리_m": 12.4,
+    "차로수": 4.0,
+    "주기_s": 130.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0764783,
+     37.25334166
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1972",
+    "기대대기_s": 46.5,
+    "보행신호": "有",
+    "횡단거리_m": 13.0,
+    "차로수": 4.0,
+    "주기_s": 130.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0776213,
+     37.25261561
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1971",
+    "기대대기_s": 61.3,
+    "보행신호": "有",
+    "횡단거리_m": 12.9,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0778249,
+     37.25249916
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1970",
+    "기대대기_s": 61.1,
+    "보행신호": "有",
+    "횡단거리_m": 13.2,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0786395,
+     37.2520153
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1969",
+    "기대대기_s": 61.4,
+    "보행신호": "有",
+    "횡단거리_m": 12.8,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.078979,
+     37.25180018
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1968",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 13.7,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.079489,
+     37.25132425
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1967",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 12.8,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0577814221,
+     37.2870876096
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-2064",
+    "기대대기_s": 52.1,
+    "보행신호": "有",
+    "횡단거리_m": 36.0,
+    "차로수": 10.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0567254,
+     37.28969068
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-2058",
+    "기대대기_s": 60.8,
+    "보행신호": "有",
+    "횡단거리_m": 25.0,
+    "차로수": 5.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0759821,
+     37.25536803
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1999",
+    "기대대기_s": 44.3,
+    "보행신호": "有",
+    "횡단거리_m": 46.7,
+    "차로수": 13.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0696446,
+     37.24851981
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-2044",
+    "기대대기_s": 48.8,
+    "보행신호": "有",
+    "횡단거리_m": 40.5,
+    "차로수": 11.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0527165,
+     37.24518845
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-2043",
+    "기대대기_s": 51.5,
+    "보행신호": "有",
+    "횡단거리_m": 36.9,
+    "차로수": 12.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0500465,
+     37.24205597
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-2036",
+    "기대대기_s": 61.7,
+    "보행신호": "有",
+    "횡단거리_m": 7.0,
+    "차로수": 1.0,
+    "주기_s": 150.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0609566,
+     37.24428122
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-2035",
+    "기대대기_s": 44.5,
+    "보행신호": "有",
+    "횡단거리_m": 9.6,
+    "차로수": 3.0,
+    "주기_s": 120.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0422078,
+     37.28906823
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-2008",
+    "기대대기_s": 65.7,
+    "보행신호": "有",
+    "횡단거리_m": 8.0,
+    "차로수": 1.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0487091,
+     37.29763317
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-2020",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 12.4,
+    "차로수": 1.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0766135,
+     37.25601831
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1998",
+    "기대대기_s": 44.0,
+    "보행신호": "有",
+    "횡단거리_m": 47.2,
+    "차로수": 13.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0776112,
+     37.25509229
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1997",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 51.8,
+    "차로수": 11.0,
+    "주기_s": 130.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.079878,
+     37.25886309
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1996",
+    "기대대기_s": 21.7,
+    "보행신호": "有",
+    "횡단거리_m": 47.9,
+    "차로수": 13.0,
+    "주기_s": 130.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0798301,
+     37.25994536
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1995",
+    "기대대기_s": 42.9,
+    "보행신호": "有",
+    "횡단거리_m": 48.7,
+    "차로수": 13.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0502759,
+     37.24746683
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-2026",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 14.0,
+    "차로수": 2.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0456609,
+     37.2748416
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-2025",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 19.5,
+    "차로수": 3.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0686513,
+     37.29282817
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-2023",
+    "기대대기_s": 62.7,
+    "보행신호": "有",
+    "횡단거리_m": 11.4,
+    "차로수": 2.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0594288,
+     37.26650542
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-2022",
+    "기대대기_s": 69.7,
+    "보행신호": "有",
+    "횡단거리_m": 14.6,
+    "차로수": 5.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0411462,
+     37.26431752
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-2055",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 14.0,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0395242,
+     37.26153322
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-2054",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 15.1,
+    "차로수": 4.0,
+    "주기_s": 160.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0429641,
+     37.2399246
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-2050",
+    "기대대기_s": 56.8,
+    "보행신호": "有",
+    "횡단거리_m": 30.0,
+    "차로수": 5.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0423453,
+     37.25881232
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1408",
+    "기대대기_s": 38.4,
+    "보행신호": "有",
+    "횡단거리_m": 18.8,
+    "차로수": 6.0,
+    "주기_s": 123.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0421004,
+     37.25828857
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1407",
+    "기대대기_s": 41.5,
+    "보행신호": "有",
+    "횡단거리_m": 15.0,
+    "차로수": 5.0,
+    "주기_s": 123.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0416765,
+     37.25752074
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1406",
+    "기대대기_s": 68.9,
+    "보행신호": "有",
+    "횡단거리_m": 15.5,
+    "차로수": 5.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0415763,
+     37.25731303
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1405",
+    "기대대기_s": 66.0,
+    "보행신호": "有",
+    "횡단거리_m": 18.9,
+    "차로수": 5.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.040849,
+     37.25637276
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1404",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 15.1,
+    "차로수": 4.0,
+    "주기_s": 180.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0407258,
+     37.25623707
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1403",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 5.3,
+    "차로수": 1.0,
+    "주기_s": 180.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0401341,
+     37.25525226
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1402",
+    "기대대기_s": null,
+    "보행신호": "無",
+    "횡단거리_m": 18.8,
+    "차로수": 5.0,
+    "주기_s": 180.0,
+    "marker-color": "#4575b4",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0396002,
+     37.25485355
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1401",
+    "기대대기_s": 67.2,
+    "보행신호": "有",
+    "횡단거리_m": 17.5,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0392142,
+     37.25447348
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1400",
+    "기대대기_s": 66.7,
+    "보행신호": "有",
+    "횡단거리_m": 18.1,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0604082,
+     37.27004065
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1397",
+    "기대대기_s": 60.1,
+    "보행신호": "有",
+    "횡단거리_m": 25.9,
+    "차로수": 6.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0580573,
+     37.26846496
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1396",
+    "기대대기_s": 61.9,
+    "보행신호": "有",
+    "횡단거리_m": 23.7,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0550475,
+     37.26963242
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1395",
+    "기대대기_s": 56.2,
+    "보행신호": "有",
+    "횡단거리_m": 21.8,
+    "차로수": 7.0,
+    "주기_s": 165.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0550494,
+     37.26679348
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1394",
+    "기대대기_s": 63.8,
+    "보행신호": "有",
+    "횡단거리_m": 21.5,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0524754,
+     37.26580804
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1393",
+    "기대대기_s": 60.4,
+    "보행신호": "有",
+    "횡단거리_m": 25.6,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0498262,
+     37.26502826
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1392",
+    "기대대기_s": 64.1,
+    "보행신호": "有",
+    "횡단거리_m": 21.1,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0499143,
+     37.263522
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1391",
+    "기대대기_s": 61.2,
+    "보행신호": "有",
+    "횡단거리_m": 24.6,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0489983,
+     37.26179251
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1390",
+    "기대대기_s": 55.5,
+    "보행신호": "有",
+    "횡단거리_m": 31.7,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0465469,
+     37.25959894
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1389",
+    "기대대기_s": 62.4,
+    "보행신호": "有",
+    "횡단거리_m": 23.1,
+    "차로수": 7.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0438285,
+     37.25697937
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1388",
+    "기대대기_s": 60.8,
+    "보행신호": "有",
+    "횡단거리_m": 25.1,
+    "차로수": 6.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0439972,
+     37.2560424
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1387",
+    "기대대기_s": 56.4,
+    "보행신호": "有",
+    "횡단거리_m": 30.5,
+    "차로수": 8.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0425791,
+     37.25202539
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1386",
+    "기대대기_s": 55.1,
+    "보행신호": "有",
+    "횡단거리_m": 32.1,
+    "차로수": 9.0,
+    "주기_s": 180.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0472692,
+     37.26894491
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1419",
+    "기대대기_s": 13.6,
+    "보행신호": "有",
+    "횡단거리_m": 12.6,
+    "차로수": 4.0,
+    "주기_s": 60.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0467461,
+     37.26778011
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1418",
+    "기대대기_s": 13.2,
+    "보행신호": "有",
+    "횡단거리_m": 13.2,
+    "차로수": 2.0,
+    "주기_s": 60.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0463233,
+     37.26682301
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1417",
+    "기대대기_s": 12.4,
+    "보행신호": "有",
+    "횡단거리_m": 14.4,
+    "차로수": 3.0,
+    "주기_s": 60.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0460225,
+     37.26620017
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1416",
+    "기대대기_s": 13.3,
+    "보행신호": "有",
+    "횡단거리_m": 13.1,
+    "차로수": 4.0,
+    "주기_s": 60.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0452101,
+     37.26437596
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1415",
+    "기대대기_s": 59.7,
+    "보행신호": "有",
+    "횡단거리_m": 17.6,
+    "차로수": 4.0,
+    "주기_s": 165.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0446271,
+     37.26380584
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1414",
+    "기대대기_s": 3.4,
+    "보행신호": "有",
+    "횡단거리_m": 20.2,
+    "차로수": 4.0,
+    "주기_s": 43.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.044736,
+     37.26262774
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1413",
+    "기대대기_s": 5.3,
+    "보행신호": "有",
+    "횡단거리_m": 14.7,
+    "차로수": 4.0,
+    "주기_s": 43.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.044736,
+     37.26262774
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1412",
+    "기대대기_s": 3.4,
+    "보행신호": "有",
+    "횡단거리_m": 21.7,
+    "차로수": 7.0,
+    "주기_s": 43.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0451602,
+     37.2614282
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1411",
+    "기대대기_s": 21.3,
+    "보행신호": "有",
+    "횡단거리_m": 21.1,
+    "차로수": 7.0,
+    "주기_s": 90.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0451602,
+     37.2614282
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1410",
+    "기대대기_s": 25.3,
+    "보행신호": "有",
+    "횡단거리_m": 15.5,
+    "차로수": 5.0,
+    "주기_s": 90.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     127.0433105,
+     37.25932976
+    ]
+   },
+   "properties": {
+    "관리번호": "수원-1409",
+    "기대대기_s": 53.2,
+    "보행신호": "有",
+    "횡단거리_m": 22.5,
+    "차로수": 7.0,
+    "주기_s": 160.0,
+    "marker-color": "#d73027",
+    "marker-size": "small"
+   }
+  }
+ ]
+}
