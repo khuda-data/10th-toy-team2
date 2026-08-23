@@ -18,11 +18,22 @@
 트랙(정지 2초)에 40m 반경은 신호 횡단보도 2개·110.6초를 붙였는데,
 가장 가까운 것도 트랙에서 31.9m 떨어져 있었다(횡단거리 12.6m). 안 건넌 것이다.
 
-그래서 각 횡단보도의 **자기 길이**를 기준으로 잡는다.
+세 가지를 쓴다.
 
-    임계값 = max(횡단거리 ÷ 2, 5m) + GPS 오차
+  1) 임계값을 각 횡단보도의 **자기 길이**로 정한다
+         임계값 = max(횡단거리 ÷ 2, 5m) + GPS 오차
+     실제로 건넜다면 트랙이 그 중심 부근을 통과해야 하기 때문이다.
 
-횡단보도를 실제로 건넜다면 트랙이 그 중심 부근을 통과해야 하기 때문이다.
+  2) 거리를 **점이 아니라 선분**으로 잰다
+     구간이 40m 라 끝점만 보면 중간에 건넌 횡단보도를 놓친다.
+
+  3) 한 교차로에서는 **가장 가까운 하나만** 센다
+     교차로 중심을 지나면 사방 3~4개가 다 임계값 안에 들어온다.
+     실제로 건너는 것은 보통 1개다.
+
+⚠️ 3)은 휴리스틱이다. 대각선으로 건너면(2개 건넘) 과소계산한다.
+   자동 판정은 어디까지나 보조 수단이고, 정답은 걸으면서 기록한
+   스톱워치 실측이다. `--ids` 로 관리번호를 직접 넣는 쪽이 항상 정확하다.
 
 실행
 ────
@@ -54,6 +65,20 @@ GPS_ERR_M = 10.0
 
 #: 횡단거리가 비어 있을 때 쓸 기본값(m). 영통구 중앙값.
 DEFAULT_LEN_M = 15.0
+
+#: 교차로 군집 반경(m). 한 교차로의 횡단보도를 묶어 1개만 세기 위한 값.
+#: 40m 는 좁다 — 큰 교차로는 마주보는 횡단보도가 54~71m 떨어져 있다.
+#: 경로 A(경희대→영통역)에서 80m 이상일 때 3개로 안정되고, 이는 답사값
+#: "신호 횡단보도 3개"와 일치한다(40m 는 5개로 과대). 100m 는 한 군집에
+#: 6개까지 묶여 서로 다른 교차로를 합치기 시작한다.
+#: ⚠️ 정답 경로 1개로 맞춘 값이다. 경로가 늘면 다시 확인할 것.
+INTERSECTION_M = 80.0
+
+#: 임계값 상한(m). 이걸 안 걸면 넓은 도로에서 오검출이 난다.
+#: 32.5m 짜리 횡단보도는 half=16.3m 라 임계값이 26m 가 되는데,
+#: 그 도로 인도를 따라 걷기만 해도 중심에서 16m 라 걸려 버린다.
+#: 실제로 건넜다면 중심 위를 지나므로 GPS 오차 수준이면 충분하다.
+MAX_THRESHOLD_M = 20.0
 
 
 # ─────────────────────────────────────────────────────────────
@@ -88,7 +113,58 @@ def read_gpx(path: str | Path) -> tuple[np.ndarray, np.ndarray]:
 def _threshold(cw: pd.DataFrame, gps_err: float = GPS_ERR_M) -> np.ndarray:
     """횡단보도별 통과 판정 임계값(m)."""
     half = cw["횡단거리_m"].fillna(DEFAULT_LEN_M).to_numpy() / 2.0
-    return np.maximum(half, 5.0) + gps_err
+    return np.minimum(np.maximum(half, 5.0) + gps_err, MAX_THRESHOLD_M)
+
+
+def _to_xy(lat, lon, lat0: float, lon0: float) -> tuple[np.ndarray, np.ndarray]:
+    """위경도 → 기준점 중심 평면좌표(m). 수 km 범위에서 오차 무시할 수준."""
+    k = 111320.0
+    return ((np.asarray(lon, float) - lon0) * k * np.cos(np.radians(lat0)),
+            (np.asarray(lat, float) - lat0) * k)
+
+
+def dist_to_track(track_lat, track_lon, lat: float, lon: float) -> float:
+    """한 점에서 트랙(선분들의 연결)까지 최단거리(m).
+
+    점끼리만 재면 구간이 길 때 사이를 지나간 횡단보도를 놓친다.
+    40m 구간의 끝점만 보면 중간의 횡단보도는 20m 밖으로 계산된다.
+    """
+    tx, ty = _to_xy(track_lat, track_lon, lat, lon)
+    px = py = 0.0                                   # 기준점이 곧 그 횡단보도
+    if len(tx) == 1:
+        return float(np.hypot(tx[0] - px, ty[0] - py))
+
+    ax, ay = tx[:-1], ty[:-1]
+    bx, by = tx[1:], ty[1:]
+    dx, dy = bx - ax, by - ay
+    L2 = dx * dx + dy * dy
+    # 선분 위 최근접점의 매개변수 t 를 [0,1] 로 자른다 (선분 밖이면 끝점)
+    with np.errstate(invalid="ignore", divide="ignore"):
+        t = np.where(L2 > 0, ((px - ax) * dx + (py - ay) * dy) / L2, 0.0)
+    t = np.clip(t, 0.0, 1.0)
+    return float(np.hypot(ax + t * dx - px, ay + t * dy - py).min())
+
+
+def _cluster_intersections(cw: pd.DataFrame,
+                           radius_m: float = INTERSECTION_M) -> np.ndarray:
+    """횡단보도를 교차로 단위로 묶는다.
+
+    한 교차로에 3~4개가 붙어 있는데 통과 시 보통 1개만 건넌다.
+    묶어 두고 가장 가까운 하나만 채택하기 위한 전처리다.
+    """
+    lat = cw["위도"].to_numpy()
+    lon = cw["경도"].to_numpy()
+    n = len(cw)
+    label = np.full(n, -1, dtype=int)
+    nxt = 0
+    for i in range(n):
+        if label[i] >= 0:
+            continue
+        d = haversine(lat[i], lon[i], lat, lon)
+        near = (d <= radius_m) & (label < 0)
+        label[near] = nxt
+        nxt += 1
+    return label
 
 
 # ─────────────────────────────────────────────────────────────
@@ -115,16 +191,25 @@ def nearby(cw: pd.DataFrame, lat: float, lon: float,
 # ─────────────────────────────────────────────────────────────
 
 def crossed(cw: pd.DataFrame, track_lat: np.ndarray, track_lon: np.ndarray,
-            gps_err: float = GPS_ERR_M) -> pd.DataFrame:
+            gps_err: float = GPS_ERR_M, one_per_intersection: bool = True,
+            intersection_m: float = INTERSECTION_M) -> pd.DataFrame:
     """트랙이 실제로 건넌 것으로 판정되는 횡단보도.
 
-    각 횡단보도 중심에서 트랙까지의 최단거리를 재고, 그 횡단보도
+    각 횡단보도 중심에서 트랙(선분)까지의 최단거리를 재고, 그 횡단보도
     자신의 길이로 만든 임계값과 비교한다(모듈 docstring 참조).
+    같은 교차로에서 여러 개가 걸리면 가장 가까운 하나만 남긴다.
     """
-    d = np.array([haversine(track_lat, track_lon, y, x).min()
+    track_lat = np.asarray(track_lat, float)
+    track_lon = np.asarray(track_lon, float)
+    d = np.array([dist_to_track(track_lat, track_lon, y, x)
                   for y, x in zip(cw["위도"], cw["경도"])])
     hit = d <= _threshold(cw, gps_err)
     out = cw[hit].assign(트랙거리_m=d[hit].round(1))
+    if one_per_intersection and len(out) > 1:
+        out = out.assign(_교차로=_cluster_intersections(out, intersection_m))
+        out = (out.sort_values("트랙거리_m")
+                  .drop_duplicates("_교차로", keep="first")
+                  .drop(columns="_교차로"))
     return out.sort_values("트랙거리_m")
 
 
@@ -232,6 +317,10 @@ def main() -> int:
                    help="지도용 GeoJSON 생성 (GitHub 에서 지도로 보임)")
     ap.add_argument("--gps-err", type=float, default=GPS_ERR_M,
                     help=f"GPS 오차 여유 m (기본 {GPS_ERR_M})")
+    ap.add_argument("--intersection", type=float, default=INTERSECTION_M,
+                    help=f"교차로 군집 반경 m (기본 {INTERSECTION_M})")
+    ap.add_argument("--all-nearby", action="store_true",
+                    help="교차로 묶기 없이 근처 전부 (진단용)")
     a = ap.parse_args()
 
     if not a.csv.exists():
@@ -248,7 +337,9 @@ def main() -> int:
         lat, lon = read_gpx(a.gpx)
         L = haversine(lat[:-1], lon[:-1], lat[1:], lon[1:]).sum()
         print(f"\n{a.gpx.name}  포인트 {len(lat)}개 · 경로 {L:.0f}m\n")
-        _report(crossed(cw, lat, lon, a.gps_err), "트랙거리_m")
+        _report(crossed(cw, lat, lon, a.gps_err,
+                        one_per_intersection=not a.all_nearby,
+                        intersection_m=a.intersection), "트랙거리_m")
     elif a.at:
         print(f"\n({a.at[0]}, {a.at[1]}) 주변 횡단보도\n")
         n = nearby(cw, a.at[0], a.at[1])
