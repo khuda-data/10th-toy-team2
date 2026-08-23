@@ -76,10 +76,13 @@ class EtaEngine:
         # 신호대기 산출물: 횡단보도별 기대대기가 이미 계산되어 있음.
         # 한글 스키마 그대로 둔다 — 통과 판정을 route_wait 에 위임하는데
         # 거기서 횡단거리_m 로 임계값을 정하므로 컬럼을 버리면 안 된다.
-        sig_path = d / "영통구_횡단보도별_신호대기.csv"
+        # 수원시 전체 + 신호등 보충본(signal_suwon.py)이 있으면 그쪽을 쓴다.
+        # 영통구본은 검증 경로에서 확정 9곳 중 3곳이 아예 없었다.
+        suwon = d / "수원시_횡단보도별_신호대기.csv"
+        sig_path = suwon if suwon.exists() else d / "영통구_횡단보도별_신호대기.csv"
         if sig_path.exists():
             signals = pd.read_csv(sig_path, encoding="utf-8-sig")
-            print(f"[eta] 신호대기 데이터 {len(signals)}개 지점 로드 (영통구)")
+            print(f"[eta] 신호대기 데이터 {len(signals)}개 지점 로드 ({sig_path.stem.split('_')[0]})")
         elif (d / "signals.csv").exists():
             signals = pd.read_csv(d / "signals.csv")
         return cls(coef, v_user, signal_model, signals, slope_range=slope_range)
@@ -134,9 +137,19 @@ class EtaEngine:
             return self._legacy_wait(lat, lon, detail)
 
         hit = route_wait.crossed(self.signals, lat, lon)
-        total = float(hit["기대대기_s"].sum())
-        hits = list(zip(hit["횡단보도관리번호"], hit["기대대기_s"]))
+        # 이론값은 실측 대비 과대추정한다. 검증 걷기 16회차로 잰 보정계수를 건다.
+        # signal_model 에 alpha/beta 가 있으면 그것을, 없으면 route_wait.LAMBDA.
+        w = self._calibrate(hit["기대대기_s"].to_numpy(float))
+        total = float(w.sum())
+        hits = list(zip(hit["횡단보도관리번호"], w))
         return (total, hits) if detail else total
+
+    def _calibrate(self, theo: np.ndarray) -> np.ndarray:
+        """이론 기대대기 → 보정 기대대기 (alpha + beta·theo)."""
+        if self.signal_model and "beta" in self.signal_model:
+            return (self.signal_model.get("alpha", 0.0)
+                    + self.signal_model["beta"] * theo)
+        return getattr(route_wait, "LAMBDA", 1.0) * theo
 
     def _legacy_wait(self, lat, lon, detail: bool, radius_m: float = 25.0):
         """`signals.csv`(crossing_id, lat, lon, cycle_C_s, red_R_s) 대비책.
