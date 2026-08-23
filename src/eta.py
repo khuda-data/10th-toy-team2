@@ -6,9 +6,10 @@
 인터페이스 계약 (팀원 산출물이 갱신되면 파일만 교체하면 됨):
 - 속도 모델: data/processed/k_slope_model.json  {"coef": [b2, b1, b0]}  (np.polyfit 순서)
           data/processed/v_user.csv         person, v_user_mps 컬럼 필수
-- 신호 모델: data/processed/signal_model.json   {"alpha": float, "beta": float}
-          data/processed/signals.csv         crossing_id, lat, lon, cycle_C_s, red_R_s
+- 신호 모델: data/processed/영통구_횡단보도별_신호대기.csv (한글 스키마, 우선)
+          또는 data/processed/signals.csv  crossing_id, lat, lon, cycle_C_s, red_R_s
           (아직 없으면 신호대기 0초로 동작 — 엔진은 오늘부터 사용 가능)
+          경로가 어느 횡단보도를 건넜는지는 route_wait.crossed() 가 판정한다.
 
 사용 예:
     from src.eta import EtaEngine
@@ -22,6 +23,11 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+
+try:                      # 패키지로 import 될 때(src.eta)와 직접 실행 둘 다 지원
+    from . import route_wait
+except ImportError:
+    import route_wait
 
 # 다항식은 학습 범위 밖에서 발산하므로 배율을 물리적 범위로 제한 (v2 문서 규약: 0.3~1.4)
 RATIO_CLIP = (0.3, 1.4)
@@ -67,13 +73,12 @@ class EtaEngine:
         elif (d / "signal_model.json").exists():
             signal_model = json.load(open(d / "signal_model.json", encoding="utf-8"))
 
-        # 신호대기 산출물: 횡단보도별 기대대기가 이미 계산되어 있음
+        # 신호대기 산출물: 횡단보도별 기대대기가 이미 계산되어 있음.
+        # 한글 스키마 그대로 둔다 — 통과 판정을 route_wait 에 위임하는데
+        # 거기서 횡단거리_m 로 임계값을 정하므로 컬럼을 버리면 안 된다.
         sig_path = d / "영통구_횡단보도별_신호대기.csv"
         if sig_path.exists():
-            raw = pd.read_csv(sig_path)
-            signals = raw.rename(columns={"횡단보도관리번호": "crossing_id", "위도": "lat",
-                                          "경도": "lon", "기대대기_s": "wait_s"})[
-                ["crossing_id", "lat", "lon", "wait_s"]]
+            signals = pd.read_csv(sig_path, encoding="utf-8-sig")
             print(f"[eta] 신호대기 데이터 {len(signals)}개 지점 로드 (영통구)")
         elif (d / "signals.csv").exists():
             signals = pd.read_csv(d / "signals.csv")
@@ -89,34 +94,62 @@ class EtaEngine:
         return np.clip(np.polyval(self.coef, s), *RATIO_CLIP)
 
     def expected_wait_s(self, cycle_C_s: float, red_R_s: float) -> float:
-        """이론공식 E(Wait)=R^2/(2C)에 보정회귀(alpha+beta*이론값)를 적용."""
+        """이론공식 E(Wait)=R^2/(2C)에 보정회귀(alpha+beta*이론값)를 적용.
+
+        alpha/beta 는 검증 걷기 후에나 정해진다. yeongtong_signal_params.json
+        에는 없으므로 기본값(보정 없음)으로 동작해야 한다.
+        """
         theo = red_R_s ** 2 / (2 * cycle_C_s)
         if self.signal_model is None:
             return theo
-        return self.signal_model["alpha"] + self.signal_model["beta"] * theo
+        return (self.signal_model.get("alpha", 0.0)
+                + self.signal_model.get("beta", 1.0) * theo)
 
-    def route_signal_wait_s(self, segments: pd.DataFrame, radius_m: float = 25.0,
-                            detail: bool = False):
-        """경로가 횡단보도 반경 radius_m 내를 지나면 그 지점의 기대대기를 합산.
+    def _route_track(self, segments: pd.DataFrame) -> tuple[np.ndarray, np.ndarray]:
+        """구간 테이블 → 경로 폴리라인. 첫 구간의 시작점부터 이어 붙인다."""
+        lat = segments["end_lat"].to_numpy(float)
+        lon = segments["end_lon"].to_numpy(float)
+        if "start_lat" in segments:
+            lat = np.concatenate([segments["start_lat"].to_numpy(float)[:1], lat])
+            lon = np.concatenate([segments["start_lon"].to_numpy(float)[:1], lon])
+        return lat, lon
 
-        신호대기 산출물(`영통구_횡단보도별_신호대기.csv`)은 지점별 기대대기(`wait_s`)를
-        이미 계산해 두었으므로 그 값을 그대로 사용한다. 신호 데이터가 없거나 경로에
-        좌표가 없으면 0초(= 신호 미반영)로 동작한다.
+    def route_signal_wait_s(self, segments: pd.DataFrame, detail: bool = False):
+        """경로가 실제로 건넌 횡단보도의 기대대기를 합산.
+
+        통과 판정은 `route_wait.crossed()` 에 위임한다. 고정 반경으로 잡으면
+        세 가지가 어긋난다(근거·회귀시험은 route_wait 모듈 docstring 참조).
+
+          - 옆을 스쳐 지나기만 해도 붙는다      → 임계값을 횡단보도 길이 기반 + 상한
+          - 구간(40m) 중간의 횡단을 놓친다      → 점이 아니라 선분으로 거리 측정
+          - 교차로 사방 3~4개가 모두 더해진다   → 교차로당 가장 가까운 1개만
+
+        신호 데이터가 없거나 경로에 좌표가 없으면 0초(= 신호 미반영)로 동작한다.
         """
         if self.signals is None or len(self.signals) == 0 or "end_lat" not in segments:
             return (0.0, []) if detail else 0.0
 
-        pts = segments[["end_lat", "end_lon"]].to_numpy()
+        lat, lon = self._route_track(segments)
+        if "위도" not in self.signals.columns:       # 옛 계약 형식(signals.csv)
+            return self._legacy_wait(lat, lon, detail)
+
+        hit = route_wait.crossed(self.signals, lat, lon)
+        total = float(hit["기대대기_s"].sum())
+        hits = list(zip(hit["횡단보도관리번호"], hit["기대대기_s"]))
+        return (total, hits) if detail else total
+
+    def _legacy_wait(self, lat, lon, detail: bool, radius_m: float = 25.0):
+        """`signals.csv`(crossing_id, lat, lon, cycle_C_s, red_R_s) 대비책.
+
+        길이 정보가 없어 길이 기반 임계값을 못 쓴다. 고정 반경으로 두되,
+        이 경로로 들어오면 과대추정될 수 있음을 알린다.
+        """
         total, hits = 0.0, []
         for _, s in self.signals.iterrows():
-            if "wait_s" in s:
-                wait = float(s["wait_s"])
-            else:  # 원래 계약 형식(cycle_C_s, red_R_s)일 때
-                wait = self.expected_wait_s(s["cycle_C_s"], s["red_R_s"])
+            wait = self.expected_wait_s(s["cycle_C_s"], s["red_R_s"])
             if wait <= 0:
                 continue
-            d = _haversine_m(pts[:, 0], pts[:, 1], s["lat"], s["lon"])
-            if (d < radius_m).any():
+            if (_haversine_m(lat, lon, s["lat"], s["lon"]) < radius_m).any():
                 total += wait
                 hits.append((s.get("crossing_id", "?"), wait))
         return (total, hits) if detail else total
