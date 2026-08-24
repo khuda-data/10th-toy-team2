@@ -130,13 +130,13 @@ def build_results(seg: pd.DataFrame, engine: EtaEngine,
         # 이 회차가 말해주는 평지환산 속도. 두 갈래로 낸다.
         #   v_hat      = 실측 대기를 뺀 진짜 보행속도. 사람의 걸음 일관성을 재는 값
         #   v_hat_예측 = 모델 대기를 뺀 값. 실서비스는 실측 대기를 모르므로 이쪽만 쓸 수 있다
-        ratio = engine.predicted_ratio(g["slope_pct"].fillna(0.0))
-        r["평지환산거리_m"] = float((g["dist_m"].to_numpy() / ratio).sum())
+        # 계산은 엔진에 위임한다 — 서비스 코드(EtaEngine.update_from_history)와
+        # 평가 코드가 같은 식을 쓰도록 한 곳에만 둔다.
+        r["평지환산거리_m"] = engine.flat_equivalent_distance(g)
         r["대기_s"] = r.get("신호대기_실측", r["신호대기"])
+        r["v_hat"] = engine.speed_from_walk(g, actual, r["대기_s"])
+        r["v_hat_예측"] = engine.speed_from_walk(g, actual, r["신호대기"])
         moving = actual - r["대기_s"]
-        moving_p = actual - r["신호대기"]
-        r["v_hat"] = r["평지환산거리_m"] / moving if moving > 0 else np.nan
-        r["v_hat_예측"] = r["평지환산거리_m"] / moving_p if moving_p > 0 else np.nan
         r["생속도"] = r["dist_m"] / moving if moving > 0 else np.nan
         rows.append(r)
     return add_warm_start(pd.DataFrame(rows))

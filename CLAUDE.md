@@ -23,7 +23,7 @@ ETA = Σ [ 구간거리 ÷ (v_user × k_slope(경사도)) ] + Σ 신호대기
 
 | 파일 | 역할 |
 |---|---|
-| `src/eta.py` | ETA 통합 엔진. 계수 파일을 자동 인식해 조립 |
+| `src/eta.py` | ETA 통합 엔진. 계수 파일 자동 인식 + 웜스타트(`update_from_history`) |
 | `src/evaluate_internal.py` | 학습 데이터 내부 검증 (홀드아웃 / shrinkage / 학습곡선) |
 | `src/evaluate_validation.py` | 검증 경로 최종 평가 |
 | `src/plot_validation.py` | 검증 결과 시각화 5장 |
@@ -83,7 +83,8 @@ ETA = Σ [ 구간거리 ÷ (v_user × k_slope(경사도)) ] + Σ 신호대기
 - 검증 GPX 24개 세그먼트 처리 → `validation_segments.csv` 743구간
 - `evaluate_validation.py`: 개인 이력 재추정, 정/역방향 자동 판정, 왕복 대칭 분석
 - `plot_validation.py`: 그림 5장
-- `docs/평가_검증_보고서.md` 1·8·11·12절 작성
+- `docs/평가_검증_보고서.md` 1·2·8·11·12절 작성
+- `eta.py`에 웜스타트 구현 — 엔진 API만으로 100초 → 74초 재현
 
 ## 반드시 알아야 할 것 (검증에서 새로 확인)
 

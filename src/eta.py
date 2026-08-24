@@ -14,7 +14,14 @@
 사용 예:
     from src.eta import EtaEngine
     engine = EtaEngine.load()
-    eta_s = engine.route_eta(segments_df, person="권동하")
+    eta_s = engine.route_eta(segments_df, person="권동하")          # 콜드스타트
+
+    # 그 사람의 지난 걷기 기록이 있으면 속도를 다시 추정해 쓴다(웜스타트).
+    # 검증 18회차에서 MAE 100초 -> 74초. 배포된 v_user 는 경사 실험용 반복
+    # 보행에서 나온 값이라 실제 이동과 맥락이 달라 최대 21% 어긋난다.
+    engine.update_from_history("권동하", [(seg1, 1111.0), (seg2, 964.0)])
+    eta_s = engine.route_eta(segments_df, person="권동하")          # 웜스타트
+    engine.reset_person("권동하")                                   # 되돌리기
 """
 from __future__ import annotations
 
@@ -43,6 +50,9 @@ class EtaEngine:
         self.signal_model = signal_model  # {"alpha":..., "beta":...} or None
         self.signals = signals            # 횡단보도 테이블 or None
         self.slope_range = slope_range    # v2: 측정 범위 밖 경사도는 경계값으로 클립(외삽 방지)
+        # update_from_history 로 덮어쓰기 전의 학습값. reset_person 으로 되돌릴 때 쓴다.
+        self.v_user_trained: dict[str, float | None] = {}
+        self.v_user_source: dict[str, str] = {}   # person -> "history(n)" (덮어쓴 경우만)
 
     # ---------- 로딩 ----------
     @classmethod
@@ -167,11 +177,81 @@ class EtaEngine:
                 hits.append((s.get("crossing_id", "?"), wait))
         return (total, hits) if detail else total
 
+    # ---------- 개인 이력 기반 속도 재추정 (웜스타트) ----------
+    def flat_equivalent_distance(self, segments: pd.DataFrame) -> float:
+        """경사 보정을 미리 나눠 둔 '평지환산 거리'(m).
+
+        구간마다 경사가 다르므로 Σ(d_i / k_slope_i) 로 접는다. 이렇게 두면
+        소요시간이 `평지환산거리 / v` 한 번의 나눗셈으로 떨어져, 역으로
+        시간에서 v 를 뽑아낼 수도 있다(speed_from_walk).
+        """
+        ratio = self.predicted_ratio(segments["slope_pct"].fillna(0.0))
+        return float((segments["dist_m"].to_numpy() / ratio).sum())
+
+    def speed_from_walk(self, segments: pd.DataFrame, actual_s: float,
+                        wait_s: float | None = None) -> float:
+        """걷기 기록 1회 -> 그 사람의 평지환산 보행속도(m/s).
+
+        `actual_s` 는 총 경과시간(신호대기 포함)이다. 여기서 신호대기를 빼야
+        순수 보행시간이 남는다. `wait_s` 를 주지 않으면 신호 모델의 예측치를
+        쓴다 — 실서비스에는 사용자가 몇 초 서 있었는지 알 방법이 없으므로
+        이쪽이 기본값이다. 스톱워치 실측이 있으면 넣어도 된다.
+        """
+        wait = self.route_signal_wait_s(segments) if wait_s is None else float(wait_s)
+        moving_s = float(actual_s) - wait
+        if moving_s <= 0:
+            return float("nan")
+        return self.flat_equivalent_distance(segments) / moving_s
+
+    def update_from_history(self, person: str, history) -> float:
+        """사용자의 지난 걷기 기록으로 v_user 를 다시 추정해 반영한다.
+
+        배포된 v_user 는 경사 실험용 반복 보행(200~300m)에서 나온 값이라,
+        목적지를 향한 연속 보행과 맥락이 달라 최대 21% 어긋난다. 같은 맥락의
+        이력이 있으면 그쪽이 훨씬 정확하다 — 검증에서 이력 1회만으로도
+        오차가 크게 줄었다(평가·검증 보고서 12-3절).
+
+        history: [(segments_df, actual_s), ...] 또는
+                 [(segments_df, actual_s, wait_s), ...]
+                 wait_s(신호대기 실측)는 선택. 없으면 신호 모델 예측을 쓴다.
+
+        반환: 새로 추정한 평지환산 속도(m/s). 유효한 기록이 없으면 기존 값 유지.
+        """
+        speeds = []
+        for item in history:
+            seg, actual = item[0], item[1]
+            wait = item[2] if len(item) > 2 else None
+            v = self.speed_from_walk(seg, actual, wait)
+            if np.isfinite(v):
+                speeds.append(v)
+        if not speeds:
+            return self.v_user.get(person, float(np.mean(list(self.v_user.values()))))
+
+        v_new = float(np.mean(speeds))
+        self.v_user_trained.setdefault(person, self.v_user.get(person))
+        self.v_user[person] = v_new
+        self.v_user_source[person] = f"history({len(speeds)})"
+        return v_new
+
+    def reset_person(self, person: str) -> None:
+        """update_from_history 로 덮어쓴 값을 배포된 학습값으로 되돌린다."""
+        if person in self.v_user_trained:
+            trained = self.v_user_trained.pop(person)
+            if trained is None:
+                self.v_user.pop(person, None)
+            else:
+                self.v_user[person] = trained
+            self.v_user_source.pop(person, None)
+
     # ---------- 최종 ETA ----------
     def route_eta(self, segments: pd.DataFrame, person: str,
                   include_signals: bool = True) -> float:
         """segments: dist_m, slope_pct 컬럼 필수 (segmentation.build_segments 출력 형식).
-        person이 v_user에 없으면(신규 사용자) 팀 평균 속도로 fallback."""
+        person이 v_user에 없으면(신규 사용자) 팀 평균 속도로 fallback.
+
+        `update_from_history()` 를 먼저 부르면 그 사람의 실제 이력에서 다시
+        추정한 속도를 쓴다(웜스타트).
+        """
         v = self.v_user.get(person, float(np.mean(list(self.v_user.values()))))
         ratio = self.predicted_ratio(segments["slope_pct"].fillna(0.0))
         moving_s = float((segments["dist_m"].to_numpy() / (v * ratio)).sum())
@@ -204,3 +284,23 @@ if __name__ == "__main__":
     print(f"경로: {one['source_file'].iloc[0]} ({one['dist_m'].sum():.0f}m, {len(one)}개 구간)")
     print(f"실측 {actual:.0f}s | 우리 모델 {pred:.0f}s (오차 {abs(pred-actual):.0f}s) "
           f"| 정속 4km/h {base:.0f}s (오차 {abs(base-actual):.0f}s)")
+
+    # 웜스타트: 같은 사람의 다른 회차를 '지난 이력'으로 넣어 속도를 다시 추정한다
+    val = Path("data/processed/validation_segments.csv")
+    if val.exists():
+        v = pd.read_csv(val).dropna(subset=["speed_mps"])
+        runs = {k: g.sort_values("segment_id") for k, g in v.groupby(["person", "category", "trial"])}
+        target = next((k for k in runs if k[0] in engine.v_user), None)
+        if target:
+            who = target[0]
+            g = runs[target]
+            hist = [(gg, gg["dt_s"].sum()) for k, gg in runs.items() if k[0] == who and k != target]
+            engine.reset_person(who)
+            print(f"\n[웜스타트 데모] {who} — {target[1]} {target[2]}회차 예측")
+            print(f"  배포된 v_user   {engine.v_user[who]:.3f} m/s "
+                  f"-> ETA {engine.route_eta(g, who)/60:.1f}분")
+            v_new = engine.update_from_history(who, hist)
+            print(f"  이력 {len(hist)}회 재추정  {v_new:.3f} m/s "
+                  f"-> ETA {engine.route_eta(g, who)/60:.1f}분")
+            print(f"  실측                              {g['dt_s'].sum()/60:.1f}분")
+            engine.reset_person(who)
