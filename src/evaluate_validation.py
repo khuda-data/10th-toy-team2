@@ -77,7 +77,7 @@ def predict_stages(seg_route: pd.DataFrame, person: str, engine: EtaEngine,
     m1 = float((d / (team_mean_v * ratio)).sum())       # + 경사 (개인화 없음)
     m2 = float((d / (engine.v_user.get(person, team_mean_v) * ratio)).sum())  # + 개인화
     wait = engine.route_signal_wait_s(seg_route)
-    return {"M0_정속": m0, "M1_경사": m1, "M2_개인화": m2, "M3_신호": m2 + wait, "신호대기": wait}
+    return {"기존_정속": m0, "경사반영": m1, "개인속도_실험값": m2, "신호반영": m2 + wait, "신호대기": wait}
 
 
 # 수집 설계상의 정방향: 검증1 = 공대(82m) -> 영통역(55m) 내리막,
@@ -121,7 +121,7 @@ def build_results(seg: pd.DataFrame, engine: EtaEngine,
                           & (stopwatch.trial == trial)]
             if len(m):
                 r["신호대기_실측"] = float(m["wait_s"].iloc[0])
-                r["M3_신호"] = r["M2_개인화"] + r["신호대기_실측"]
+                r["신호반영"] = r["개인속도_실험값"] + r["신호대기_실측"]
         # 이 회차가 말해주는 평지환산 속도 (M4 캘리브레이션용)
         ratio = engine.predicted_ratio(g["slope_pct"].fillna(0.0))
         r["평지환산거리_m"] = float((g["dist_m"].to_numpy() / ratio).sum())
@@ -153,12 +153,12 @@ def add_warm_start(res: pd.DataFrame) -> pd.DataFrame:
         v_loo.append(v)
         m4.append(row["평지환산거리_m"] / v + row["대기_s"])
     res["v_LOO"] = v_loo
-    res["M4_캘리브"] = m4
+    res["개인속도_실제이력"] = m4
     return res
 
 
 # ---------------------------------------------------------------- 리포트
-STAGES = ["M0_정속", "M1_경사", "M2_개인화", "M3_신호", "M4_캘리브"]
+STAGES = ["기존_정속", "경사반영", "개인속도_실험값", "신호반영", "개인속도_실제이력"]
 
 
 def fmt(s: float) -> str:
@@ -176,12 +176,12 @@ def report_by_person(res: pd.DataFrame) -> None:
         print(f"    {'경로':<10}{'실측':>10}{'우리모델':>11}{'네이버':>10}{'우리오차':>10}{'네이버오차':>11}")
         for route, gr in g.groupby("route"):
             a = gr["actual_s"].mean()
-            print(f"    {route:<10}{fmt(a):>10}{fmt(gr['M3_신호'].mean()):>11}"
-                  f"{fmt(gr['M0_정속'].mean()):>10}"
-                  f"{(gr['M3_신호'] - gr['actual_s']).abs().mean():>9.0f}초"
-                  f"{(gr['M0_정속'] - gr['actual_s']).abs().mean():>10.0f}초")
-        ours = (g["M3_신호"] - g["actual_s"]).abs()
-        base = (g["M0_정속"] - g["actual_s"]).abs()
+            print(f"    {route:<10}{fmt(a):>10}{fmt(gr['신호반영'].mean()):>11}"
+                  f"{fmt(gr['기존_정속'].mean()):>10}"
+                  f"{(gr['신호반영'] - gr['actual_s']).abs().mean():>9.0f}초"
+                  f"{(gr['기존_정속'] - gr['actual_s']).abs().mean():>10.0f}초")
+        ours = (g["신호반영"] - g["actual_s"]).abs()
+        base = (g["기존_정속"] - g["actual_s"]).abs()
         print(f"    {'전체':<10}{'':>10}{'':>11}{'':>10}{ours.mean():>9.0f}초{base.mean():>10.0f}초"
               f"   (MAPE {ours.mean()/g['actual_s'].mean()*100:.1f}% vs {base.mean()/g['actual_s'].mean()*100:.1f}%)")
 
@@ -199,11 +199,11 @@ def report_ablation(res: pd.DataFrame) -> None:
         delta = "—" if prev is None else f"{prev - mae:+.0f}초"
         print(f"  {s:<14}{mae:>9.0f}초{mape:>8.1f}%{delta:>16}")
         prev = mae
-    tot = (res["M0_정속"] - res["actual_s"]).abs().mean()
-    m3 = (res["M3_신호"] - res["actual_s"]).abs().mean()
-    m4 = (res["M4_캘리브"] - res["actual_s"]).abs().mean()
-    print(f"\n  총 개선(콜드스타트 M3): {tot:.0f}초 -> {m3:.0f}초 ({(1-m3/tot)*100:.0f}% 감소)")
-    print(f"  총 개선(웜스타트  M4): {tot:.0f}초 -> {m4:.0f}초 ({(1-m4/tot)*100:.0f}% 감소)")
+    tot = (res["기존_정속"] - res["actual_s"]).abs().mean()
+    m3 = (res["신호반영"] - res["actual_s"]).abs().mean()
+    m4 = (res["개인속도_실제이력"] - res["actual_s"]).abs().mean()
+    print(f"\n  총 개선(기존 실험값 사용): {tot:.0f}초 -> {m3:.0f}초 ({(1-m3/tot)*100:.0f}% 감소)")
+    print(f"  총 개선(실제 이력 사용): {tot:.0f}초 -> {m4:.0f}초 ({(1-m4/tot)*100:.0f}% 감소)")
 
 
 def report_route_effect(res: pd.DataFrame) -> None:
@@ -216,22 +216,22 @@ def report_route_effect(res: pd.DataFrame) -> None:
     print("\n" + "=" * 74)
     print("  [3] 경로 × 방향 비교 — 모델 편향 vs 경로/방향 특성")
     print("=" * 74)
-    print(f"\n  {'경로':<8}{'방향':<9}{'경사':<7}{'n':>3}{'M3 부호오차':>13}{'M4 부호오차':>13}")
+    print(f"\n  {'경로':<8}{'방향':<9}{'경사':<7}{'n':>3}{'①부호오차':>13}{'②부호오차':>13}")
     signs = []
     for (route, direc), g in res.groupby(["route", "방향"]):
-        s3 = (g["M3_신호"] - g["actual_s"]).mean()      # 부호 유지 = 편향 방향
-        s4 = (g["M4_캘리브"] - g["actual_s"]).mean()
+        s3 = (g["신호반영"] - g["actual_s"]).mean()      # 부호 유지 = 편향 방향
+        s4 = (g["개인속도_실제이력"] - g["actual_s"]).mean()
         signs.append(s3)
         print(f"  {route:<8}{direc:<9}{g['경사'].iloc[0]:<7}{len(g):>3}"
               f"{s3:>+12.0f}초{s4:>+12.0f}초")
     if len(signs) >= 2:
         same = all(v > 0 for v in signs) or all(v < 0 for v in signs)
-        print(f"\n  -> M3 부호가 {'일치' if same else '불일치'}: "
+        print(f"\n  -> ①의 부호가 {'일치' if same else '불일치'}: "
               f"{'경로·방향과 무관한 계통 편향' if same else '경로/방향 특성이 섞여 있음'}")
-    s4_all = (res["M4_캘리브"] - res["actual_s"]).mean()
-    s3_all = (res["M3_신호"] - res["actual_s"]).mean()
-    print(f"  -> 전체 부호오차: M3 {s3_all:+.0f}초 -> M4 {s4_all:+.0f}초  "
-          f"(개인 캘리브레이션으로 계통 편향 {'해소' if abs(s4_all) < abs(s3_all) / 2 else '잔존'})")
+    s4_all = (res["개인속도_실제이력"] - res["actual_s"]).mean()
+    s3_all = (res["신호반영"] - res["actual_s"]).mean()
+    print(f"  -> 전체 부호오차: ① {s3_all:+.0f}초 -> ② {s4_all:+.0f}초  "
+          f"(실제 이력을 쓰면 한쪽으로 쏠리는 편향이 {'사라진다' if abs(s4_all) < abs(s3_all) / 2 else '남는다'})")
 
 
 def report_roundtrip(res: pd.DataFrame) -> None:
@@ -273,13 +273,13 @@ def report_tests(res: pd.DataFrame) -> None:
     print("\n" + "=" * 74)
     print("  [4] 통계 검정 — 우리 모델이 정속 방식보다 나은가")
     print("=" * 74)
-    base = (res["M0_정속"] - res["actual_s"]).abs()
+    base = (res["기존_정속"] - res["actual_s"]).abs()
     print(f"\n  n = {len(res)}회 측정")
     if len(res) < 3:
         print("  측정 수가 부족해 검정을 생략한다")
         return
-    for col, label in [("M3_신호", "M3 콜드스타트(학습 v_user)"),
-                       ("M4_캘리브", "M4 웜스타트(회차 LOO 캘리브)")]:
+    for col, label in [("신호반영", "① 개인속도를 기존 실험값으로"),
+                       ("개인속도_실제이력", "② 개인속도를 실제 이력으로")]:
         ours = (res[col] - res["actual_s"]).abs()
         if ours.isna().any():
             continue
