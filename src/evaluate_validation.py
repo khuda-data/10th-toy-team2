@@ -116,18 +116,27 @@ def build_results(seg: pd.DataFrame, engine: EtaEngine,
              "moving_s": g["moving_dt_s"].sum()}
         r.update(predict_stages(g, person, engine, team_mean_v))
 
+        # 신호대기 두 갈래를 모두 남긴다.
+        #   신호반영_예측 = 공공데이터 모델 예측 (실서비스 조건. 발표 대표값)
+        #   신호반영      = 스톱워치 실측 (오라클 상한. 도보 항만의 성능)
+        # 실측을 쓰면 정답에서 신호 항이 상쇄돼 그 항의 오차가 정의상 0이 된다.
+        r["신호반영_예측"] = r["개인속도_실험값"] + r["신호대기"]
         if stopwatch is not None:  # 실측 신호대기가 있으면 그것으로 대체
             m = stopwatch[(stopwatch.person == person) & (stopwatch.route == route)
                           & (stopwatch.trial == trial)]
             if len(m):
                 r["신호대기_실측"] = float(m["wait_s"].iloc[0])
                 r["신호반영"] = r["개인속도_실험값"] + r["신호대기_실측"]
-        # 이 회차가 말해주는 평지환산 속도 (M4 캘리브레이션용)
+        # 이 회차가 말해주는 평지환산 속도. 두 갈래로 낸다.
+        #   v_hat      = 실측 대기를 뺀 진짜 보행속도. 사람의 걸음 일관성을 재는 값
+        #   v_hat_예측 = 모델 대기를 뺀 값. 실서비스는 실측 대기를 모르므로 이쪽만 쓸 수 있다
         ratio = engine.predicted_ratio(g["slope_pct"].fillna(0.0))
         r["평지환산거리_m"] = float((g["dist_m"].to_numpy() / ratio).sum())
         r["대기_s"] = r.get("신호대기_실측", r["신호대기"])
         moving = actual - r["대기_s"]
+        moving_p = actual - r["신호대기"]
         r["v_hat"] = r["평지환산거리_m"] / moving if moving > 0 else np.nan
+        r["v_hat_예측"] = r["평지환산거리_m"] / moving_p if moving_p > 0 else np.nan
         r["생속도"] = r["dist_m"] / moving if moving > 0 else np.nan
         rows.append(r)
     return add_warm_start(pd.DataFrame(rows))
@@ -144,16 +153,20 @@ def add_warm_start(res: pd.DataFrame) -> pd.DataFrame:
     M2(학습 v_user) = 콜드스타트, M4(회차 LOO) = 웜스타트.
     """
     res = res.copy()
-    m4, v_loo = [], []
+    m4, m4p, v_loo = [], [], []
     for i, row in res.iterrows():
         others = res[(res.person == row.person) & (res.index != i)]
         if len(others) == 0 or others["v_hat"].isna().all():
-            m4.append(np.nan); v_loo.append(np.nan); continue
+            m4.append(np.nan); m4p.append(np.nan); v_loo.append(np.nan); continue
         v = float(others["v_hat"].mean())
+        vp = float(others["v_hat_예측"].mean())
         v_loo.append(v)
         m4.append(row["평지환산거리_m"] / v + row["대기_s"])
+        # 실서비스는 과거 이력의 신호대기도 모른다 — 속도 역산에도 모델값을 쓴다
+        m4p.append(row["평지환산거리_m"] / vp + row["신호대기"])
     res["v_LOO"] = v_loo
     res["개인속도_실제이력"] = m4
+    res["개인속도_실제이력_예측"] = m4p
     return res
 
 
@@ -187,23 +200,40 @@ def report_by_person(res: pd.DataFrame) -> None:
 
 
 def report_ablation(res: pd.DataFrame) -> None:
-    """요인별 기여도 분해."""
+    """요인별 기여도 분해. 신호대기 두 갈래를 나란히 보여준다.
+
+    실측 대기를 쓰면 정답(actual_s = 도보실측 + 신호실측)에서 신호 항이
+    상쇄돼 그 항의 오차가 정의상 0이 된다. 따라서 대표값으로 발표할 것은
+    '실서비스'(공공데이터 예측) 쪽이고, '상한선'은 도보 항만의 성능을 보는
+    보조 지표다. (박준서 지적, docs/신호대기_ETA_대조.md 참조)
+    """
     print("\n" + "=" * 74)
     print("  [2] 요인별 기여도 — 무엇이 오차를 줄였나")
     print("=" * 74)
-    print(f"\n  {'단계':<14}{'MAE':>10}{'MAPE':>9}{'직전 대비 개선':>16}")
-    prev = None
-    for s in STAGES:
-        err = (res[s] - res["actual_s"]).abs()
-        mae, mape = err.mean(), (err / res["actual_s"]).mean() * 100
-        delta = "—" if prev is None else f"{prev - mae:+.0f}초"
-        print(f"  {s:<14}{mae:>9.0f}초{mape:>8.1f}%{delta:>16}")
-        prev = mae
-    tot = (res["기존_정속"] - res["actual_s"]).abs().mean()
-    m3 = (res["신호반영"] - res["actual_s"]).abs().mean()
-    m4 = (res["개인속도_실제이력"] - res["actual_s"]).abs().mean()
-    print(f"\n  총 개선(기존 실험값 사용): {tot:.0f}초 -> {m3:.0f}초 ({(1-m3/tot)*100:.0f}% 감소)")
-    print(f"  총 개선(실제 이력 사용): {tot:.0f}초 -> {m4:.0f}초 ({(1-m4/tot)*100:.0f}% 감소)")
+    print("\n  실서비스 = 공공데이터로 신호대기를 예측 (실제 서비스하면 이 성능)")
+    print("  상한선   = 스톱워치 실측을 그대로 사용 (신호를 완벽히 안다고 가정)")
+    print(f"\n  {'단계':<24}{'실서비스':>15}{'상한선':>15}")
+
+    def mae(c):
+        return (res[c] - res["actual_s"]).abs().mean()
+
+    def mape(c):
+        return ((res[c] - res["actual_s"]).abs() / res["actual_s"]).mean() * 100
+
+    rows = [("기존 정속 4km/h", "기존_정속", "기존_정속"),
+            ("+ 경사", "경사반영", "경사반영"),
+            ("+ 개인속도(실험값)", "개인속도_실험값", "개인속도_실험값"),
+            ("+ 신호대기", "신호반영_예측", "신호반영"),
+            ("+ 개인속도(실제이력)", "개인속도_실제이력_예측", "개인속도_실제이력")]
+    for label, cp, co in rows:
+        tail = "   (동일)" if cp == co else ""
+        print(f"  {label:<24}{mae(cp):>9.0f}초{mape(cp):>5.1f}%"
+              f"{mae(co):>9.0f}초{mape(co):>5.1f}%{tail}")
+
+    base = mae("기존_정속")
+    for label, c in [("실서비스", "개인속도_실제이력_예측"), ("상한선  ", "개인속도_실제이력")]:
+        v = mae(c)
+        print(f"\n  총 개선({label}): {base:.0f}초 -> {v:.0f}초 ({(1 - v / base) * 100:.0f}% 감소)")
 
 
 def report_route_effect(res: pd.DataFrame) -> None:
@@ -278,8 +308,9 @@ def report_tests(res: pd.DataFrame) -> None:
     if len(res) < 3:
         print("  측정 수가 부족해 검정을 생략한다")
         return
-    for col, label in [("신호반영", "① 개인속도를 기존 실험값으로"),
-                       ("개인속도_실제이력", "② 개인속도를 실제 이력으로")]:
+    for col, label in [("신호반영_예측", "① 실서비스 · 개인속도 기존 실험값"),
+                       ("개인속도_실제이력_예측", "② 실서비스 · 개인속도 실제 이력"),
+                       ("개인속도_실제이력", "③ 상한선  · 신호를 완벽히 안다면")]:
         ours = (res[col] - res["actual_s"]).abs()
         if ours.isna().any():
             continue

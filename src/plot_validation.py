@@ -31,14 +31,14 @@ OUT = Path("figures")
 def fig_person(res: pd.DataFrame) -> None:
     people = sorted(res.person.unique())
     base = [(res[res.person == p].기존_정속 - res[res.person == p].actual_s).abs().mean() for p in people]
-    cold = [(res[res.person == p].신호반영 - res[res.person == p].actual_s).abs().mean() for p in people]
-    warm = [(res[res.person == p].개인속도_실제이력 - res[res.person == p].actual_s).abs().mean() for p in people]
+    cold = [(res[res.person == p].신호반영_예측 - res[res.person == p].actual_s).abs().mean() for p in people]
+    warm = [(res[res.person == p].개인속도_실제이력_예측 - res[res.person == p].actual_s).abs().mean() for p in people]
 
     x = np.arange(len(people)); w = 0.27
     fig, ax = plt.subplots(figsize=(9, 5))
     for off, v, c, lab in [(-w, base, C_BASE, "네이버 정속 4km/h"),
                            (0, cold, C_COLD, "우리 모델 (첫 사용자)"),
-                           (w, warm, C_WARM, "우리 모델 (이력 2회 이상)")]:
+                           (w, warm, C_WARM, "우리 모델 (이력 2회 이상, 실서비스)")]:
         b = ax.bar(x + off, v, w, color=c, label=lab)
         ax.bar_label(b, fmt="%.0f", fontsize=9, padding=2)
     ax.set_xticks(x, people)
@@ -53,21 +53,27 @@ def fig_person(res: pd.DataFrame) -> None:
 
 
 def fig_waterfall(res: pd.DataFrame) -> None:
-    stages = ["기존_정속", "경사반영", "개인속도_실험값", "신호반영", "개인속도_실제이력"]
-    labels = ["기존 방식\n정속 4km/h", "+경사\n반영", "+개인속도\n(실험값)", "+신호\n대기", "+개인속도\n(실제 이력)"]
-    mae = [(res[s] - res.actual_s).abs().mean() for s in stages]
+    """요인별 기여도. 신호대기를 예측으로 낸 것(실서비스)과 실측으로 낸 것(상한선)을 함께."""
+    labels = ["기존 방식\n정속 4km/h", "+경사\n반영", "+개인속도\n(실험값)",
+              "+신호\n대기", "+개인속도\n(실제 이력)"]
+    svc = ["기존_정속", "경사반영", "개인속도_실험값", "신호반영_예측", "개인속도_실제이력_예측"]
+    orc = ["기존_정속", "경사반영", "개인속도_실험값", "신호반영", "개인속도_실제이력"]
+    mae = lambda c: (res[c] - res.actual_s).abs().mean()
+    v_svc = [mae(c) for c in svc]
+    v_orc = [mae(c) for c in orc]
 
-    fig, ax = plt.subplots(figsize=(9, 5))
-    colors = [C_BASE, C_BASE, C_BASE, C_COLD, C_WARM]
-    b = ax.bar(labels, mae, color=colors, width=0.6)
-    ax.bar_label(b, fmt="%.0f초", fontsize=10, padding=3)
-    for i in range(1, len(mae)):
-        d = mae[i] - mae[i - 1]
-        ax.annotate(f"{d:+.0f}초", xy=(i - 0.5, max(mae[i], mae[i - 1]) + 12),
-                    ha="center", fontsize=9, color="#C0392B" if d > 0 else "#1E8449")
-    ax.set_ylabel("MAE (초)")
-    ax.set_ylim(0, max(mae) * 1.25)
-    ax.set_title(f"요인별 기여도 — 무엇이 오차를 줄였나 (정방향 n={len(res)}회차)", fontsize=13, pad=12)
+    x = np.arange(len(labels)); w = 0.36
+    fig, ax = plt.subplots(figsize=(9.5, 5.5))
+    b1 = ax.bar(x - w / 2, v_svc, w, color=C_WARM, label="실서비스 (신호대기를 예측)")
+    b2 = ax.bar(x + w / 2, v_orc, w, color=C_BASE, label="상한선 (신호대기 실측 사용)")
+    ax.bar_label(b1, fmt="%.0f초", fontsize=9, padding=2)
+    ax.bar_label(b2, fmt="%.0f초", fontsize=9, padding=2)
+    ax.set_xticks(x, labels)
+    ax.set_ylabel("평균 오차 (초)")
+    ax.set_ylim(0, max(v_orc + v_svc) * 1.25)
+    ax.set_title(f"요인별 기여도 — 무엇이 오차를 줄였나 (정방향 {len(res)}회차)",
+                 fontsize=13, pad=12)
+    ax.legend(frameon=False, fontsize=10)
     ax.spines[["top", "right"]].set_visible(False)
     ax.grid(axis="y", alpha=0.25)
     fig.tight_layout()
@@ -103,8 +109,8 @@ def fig_calibration(res: pd.DataFrame) -> None:
     ax.spines[["top", "right"]].set_visible(False); ax.grid(axis="y", alpha=0.25)
 
     shift = [(observed[i] / trained[i] - 1) * 100 for i in range(len(people))]
-    cold = [(res[res.person == p].신호반영 - res[res.person == p].actual_s).abs().mean() for p in people]
-    warm = [(res[res.person == p].개인속도_실제이력 - res[res.person == p].actual_s).abs().mean() for p in people]
+    cold = [(res[res.person == p].신호반영_예측 - res[res.person == p].actual_s).abs().mean() for p in people]
+    warm = [(res[res.person == p].개인속도_실제이력_예측 - res[res.person == p].actual_s).abs().mean() for p in people]
     ax2.scatter(np.abs(shift), cold, s=110, color=C_COLD, label="기존 실험값 사용", zorder=3)
     ax2.scatter(np.abs(shift), warm, s=110, color=C_WARM, label="실제 이력 사용", zorder=3)
     for i, p in enumerate(people):
